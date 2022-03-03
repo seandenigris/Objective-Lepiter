@@ -8,11 +8,11 @@ Class {
 }
 
 { #category : #accessing }
-ObjectiveLepiter class >> lepiterDB [
+ObjectiveLepiter class >> database [
 	^ LepiterDB ifNil: [ LeDatabasesRegistry defaultPrimaryDatabase ]
 ]
 
 { #category : #accessing }
-ObjectiveLepiter class >> lepiterDB: anLeDatabase [
+ObjectiveLepiter class >> database: anLeDatabase [
 	LepiterDB := anLeDatabase
 ]

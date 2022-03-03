@@ -28,7 +28,12 @@ MATPropertyOwner >> ensureUUID [
 
 { #category : #'*ObjectiveLepiter' }
 MATPropertyOwner >> lepiterDB [
-	^ self propertyAt: #lepiterDB ifAbsent: [ ObjectiveLepiter lepiterDB ]
+	^ self propertyAt: #lepiterDB ifAbsent: [ ObjectiveLepiter database ]
+]
+
+{ #category : #'*ObjectiveLepiter' }
+MATPropertyOwner >> lepiterDB: aLeDatabase [
+	self propertyAt: #lepiterDB put: aLeDatabase
 ]
 
 { #category : #'*ObjectiveLepiter' }
