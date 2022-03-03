@@ -137,6 +137,13 @@ OlObjectPageType >> printOn: aStream [
 ]
 
 { #category : #accessing }
+OlObjectPageType >> saveEmptyPages [
+	"We leave it up to the subject object to decide if/when to delete"
+
+	^ true
+]
+
+{ #category : #accessing }
 OlObjectPageType >> subjectModel [
 	self subjectModelReference ifNil: [ ^ nil ].
 	^ self subjectModelReference object
