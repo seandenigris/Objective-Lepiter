@@ -3,16 +3,26 @@ Trait {
 	#category : #ObjectiveLepiter
 }
 
+{ #category : #accessing }
+OlTLepiterSubject classSide >> lepiterDB [
+	^ LepiterDB ifNil: [ LeDatabasesRegistry defaultPrimaryDatabase ]
+]
+
+{ #category : #accessing }
+OlTLepiterSubject classSide >> lepiterDB: anLeDatabase [
+	LepiterDB := anLeDatabase
+]
+
 { #category : #'page-accessing' }
 OlTLepiterSubject >> ensureLepiterPage [
 
 	self lepiterPageID ifNil: [ 
 		| result |
-		result := LeDatabasesRegistry defaultPrimaryDatabase addPage: self newLepiterPage.
+		result := self lepiterDB addPage: self newLepiterPage.
 		self lepiterPageID: result uid.
 		^ result ].
 
-	LeDatabasesRegistry defaultPrimaryDatabase pageWithID: self lepiterPageID ifPresent: [ :s | ^ s ] ifAbsent: [ ].
+	self lepiterDB pageWithID: self lepiterPageID ifPresent: [ :s | ^ s ] ifAbsent: [ ].
 	
 	"Should never get here during normal use, but useful for e.g. testing"
 	LeDatabase allSubInstances do: [ :db |
@@ -27,6 +37,11 @@ OlTLepiterSubject >> ensureUUID [
 	 ^ self 
 	 	propertyAt: #uuid
 	 	ifAbsentPut: [ UUIDGenerator next ]
+]
+
+{ #category : #accessing }
+OlTLepiterSubject >> lepiterDB [
+	^ self propertyAt: #lepiterDB ifAbsent: [ self class lepiterDB ]
 ]
 
 { #category : #'page-accessing' }
