@@ -22,7 +22,7 @@ OlObjectPageType class >> exampleEmptyPage [
 	model stub uuid willReturn: 1.
 	model stub participants willReturn: #('Jack' 'Jill').
 	model stub transcript willReturn: transcript.
-	self modelReferenceBuilderMap at: Object put: [MADummyObjectUIDReferenceForTesting new
+	self modelReferenceBuilderMap at: Object put: [OlDummyObjectUIDReferenceForTesting new
 		object: model;
 		uid: model uuid;
 		yourself ].
