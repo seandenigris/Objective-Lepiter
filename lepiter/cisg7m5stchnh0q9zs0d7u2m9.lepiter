@@ -224,7 +224,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-03-03T11:52:24.343451-05:00"
+						"dateAndTimeString" : "2022-03-18T15:30:04.131376-04:00"
 					}
 				},
 				"uid" : {
@@ -234,7 +234,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "The main challenge is that either the domain model or Lepiter can change out from under the other side without warning, so we don't store any object pointers on either side, only UIDs.\n- Domain Model\n  - has the capability to generate UIDs for certain objects, like LivingLibrary's AuthoredWorks\n  - store the UID of their corresponding Lepiter page, like QuoteMe's Transcripts\n- Lepiter: The Lepiter pages referencing arbitrary objects do so via reference objects that store the object's UID as well as information about how/where to look for the object. See {{gtClass:MAObjectUIDReference}} for the default implementation which can be overriden in client libraries. An example is Dynabook's {{gtClass:DbObjectUIDReference}}.\n\nIn order for everything to work, things need to be loaded in this order:\n1. Domain model code\n2. Domain model data\n3. Lepiter DB(s) containing custom pages which reference model objects"
+				"string" : "The main challenge is that either the domain model or Lepiter can change out from under the other side without warning, so we don't store any object pointers on either side, only UIDs.\n- Domain Model\n  - has the capability to generate UIDs for certain objects, like LivingLibrary's AuthoredWorks\n  - store the UID of their corresponding Lepiter page, like QuoteMe's Transcripts\n- Lepiter: The Lepiter pages referencing arbitrary objects do so via reference objects that store the object's UID as well as information about how/where to look for the object. See {{gtClass:OlObjectUIDReference}} for the default implementation which can be overriden in client libraries. An example is [Dynabook](https://github.com/seandenigris/Dynabook)'s {{gtClass:DbObjectUIDReference}}.\n\nIn order for everything to work, things need to be loaded in this order:\n1. Domain model code\n2. Domain model data\n3. Lepiter DB(s) containing custom pages which reference model objects"
 			},
 			{
 				"__type" : "textSnippet",
@@ -310,6 +310,43 @@
 					"__type" : "textStyle"
 				},
 				"string" : "# Preparing an Object "
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2022-03-18T15:30:43.622215-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2022-03-18T15:34:38.878204-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "3OY86+SWDQCC2uP3D597mQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "## Further Research\nWhile a UID property currently is used to unambiguously identify and link domain model objects to Lepiter pages, could there be another way? Some domain objects inherently have a way to uniquely identify objects (e.g. a transaction number), but how would you do that in e.g. an AddressBook, where multiple people can have the same name? How could you distinguish \"two copies of the same object, possibly with different state\" from \"two logically different objects with the same state\"?"
 			}
 		]
 	},
