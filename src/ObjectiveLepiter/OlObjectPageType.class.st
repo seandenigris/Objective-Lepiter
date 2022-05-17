@@ -36,7 +36,7 @@ OlObjectPageType class >> exampleEmptyPage [
 { #category : #initialization }
 OlObjectPageType class >> initialize [
 
-	LeDatabasesRegistry defaultPrimaryDatabase updatePageTypes
+	self updatePrimaryDBPageTypes
 ]
 
 { #category : #accessing }
@@ -91,6 +91,12 @@ OlObjectPageType class >> subjectModel: anObject page: aLePage [
 		subjectModelReference: reference;
 		page: aLePage;
 		yourself.
+]
+
+{ #category : #initialization }
+OlObjectPageType class >> updatePrimaryDBPageTypes [
+
+	LeDatabasesRegistry defaultPrimaryDatabase updatePageTypes
 ]
 
 { #category : #comparing }
