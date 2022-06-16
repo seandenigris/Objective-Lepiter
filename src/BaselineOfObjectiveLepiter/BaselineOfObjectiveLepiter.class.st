@@ -13,7 +13,9 @@ BaselineOfObjectiveLepiter >> baseline: spec [
 			baseline: 'Magritte' with: [
 				spec repository: 'github://seandenigris/Magritte' ];
 			baseline: 'Mocketry' with: [
-				spec repository: 'github://dionisiydk/Mocketry' ].
+				spec repository: 'github://dionisiydk/Mocketry' ];
+			baseline: 'PharoEnhancements' with: [
+				spec repository: 'github://seandenigris/Pharo-Enhancements' ].
 		spec package: 'ObjectiveLepiter' with: [
-				spec requires: #('Magritte' 'Mocketry' ). ]. ].
+				spec requires: #('Magritte' 'Mocketry' 'PharoEnhancements'). ]. ].
 ]
