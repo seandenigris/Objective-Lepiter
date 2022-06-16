@@ -23,19 +23,6 @@ OlObjectAnnotationCompletionVisitor class >> obsolete [
 ]
 
 { #category : #accessing }
-OlObjectAnnotationCompletionVisitor >> addStreamFor: words startingWith: prefix [
-	^ self composite
-		addStream:
-			((words asyncStreamStartingWith: prefix)
-				collect:
-					[ :each | 
-					GtInsertTextCompletionAction
-						labeled: each
-						completion: (each allButFirst: prefix size)
-						position: self composite position ])
-]
-
-{ #category : #accessing }
 OlObjectAnnotationCompletionVisitor >> position [
 	^ self composite position
 ]
@@ -43,13 +30,6 @@ OlObjectAnnotationCompletionVisitor >> position [
 { #category : #accessing }
 OlObjectAnnotationCompletionVisitor >> visitArgument: anArgument [
 	^ self visitEntityParse: anArgument
-]
-
-{ #category : #generated }
-OlObjectAnnotationCompletionVisitor >> visitEntityAnnotation: anEntityAnnotation [
-	"Halt once".
-	"^ self addStreamFor: (GtPrefixTree add:'Tim1'; add: 'Tom2'; add: 'Toe3'; yourself) startingWith: ''."
-	^ self visitEntityParse: anEntityAnnotation
 ]
 
 { #category : #generated }

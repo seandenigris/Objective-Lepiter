@@ -78,8 +78,8 @@ OlObjectAnnotationStyler >> utility [
 	^ GtDocumentUtility
 ]
 
-{ #category : #generated }
-OlObjectAnnotationStyler >> visitEntityAnnotation: anAnnotation [
+{ #category : #'as yet unclassified' }
+OlObjectAnnotationStyler >> visitAnnotation: anAnnotation [
 	self styleMarkup: anAnnotation.
 	self styleAutoHiding: anAnnotation.
 	self styleRendered: anAnnotation

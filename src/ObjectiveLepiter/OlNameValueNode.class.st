@@ -10,9 +10,8 @@ Class {
 }
 
 { #category : #generated }
-OlNameValueNode >> acceptVisitor: anEntityParseVisitor [
-
-	^ anEntityParseVisitor visitNameValue: self
+OlNameValueNode >> acceptVisitor: anObjectParseVisitor [
+	^ anObjectParseVisitor visitNameValue: self
 ]
 
 { #category : #generated }

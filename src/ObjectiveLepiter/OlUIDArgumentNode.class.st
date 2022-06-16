@@ -10,8 +10,8 @@ Class {
 }
 
 { #category : #generated }
-OlUIDArgumentNode >> acceptVisitor: anEntityParseVisitor [
-	^ anEntityParseVisitor visitUIDArgument: self
+OlUIDArgumentNode >> acceptVisitor: anObjectParseVisitor [
+	^ anObjectParseVisitor visitUIDArgument: self
 ]
 
 { #category : #generated }

@@ -15,14 +15,14 @@ OlObjectAnnotationParser class >> activate [
 
 { #category : #'generated-accessing' }
 OlObjectAnnotationParser class >> cacheId [
-	^'2022-06-16T07:28:30.685976-04:00'
+	^'2022-06-16T08:50:24.028294-04:00'
 ]
 
 { #category : #generated }
 OlObjectAnnotationParser class >> definitionComment [
 "%glr;
-%root EntityParse;
-%prefix MpLe;
+%root ObjectParse;
+%prefix Ol;
 %suffix Node;
 
 <name>
@@ -31,7 +31,7 @@ OlObjectAnnotationParser class >> definitionComment [
 <uid>
 	: (<isLetter> | <isDigit>)+
 	;
-EntityAnnotation 
+Annotation 
 	: Item 'item' (""|"" 'bar' Item 'item')* ""|"" 'bar'? {{}}
 	;
 Item
@@ -61,18 +61,18 @@ OlObjectAnnotationParser class >> obsolete [
 { #category : #generated }
 OlObjectAnnotationParser class >> reduceTable [
 ^#(
-	#(13 1 #reduceActionForName3: 294915 false) 
-	#(13 1 #reduceActionForName3: 294913 false) 
-	#(12 1 #reduceActionForUID1: 224257 false) 
-	#(10 0 #reduceActionFor______bar__Item__item___1: 155649 false) 
-	#(11 1 #liftFirstValue: 200706 false) 
-	#(11 1 #liftFirstValue: 200705 false) 
-	#(8 2 #reduceActionForEntityAnnotation1: 121857 false) 
-	#(13 3 #reduceActionForName2: 294914 false) 
-	#(12 3 #reduceActionForUID2: 224258 false) 
-	#(8 3 #reduceActionForEntityAnnotation2: 121858 false) 
-	#(10 2 #reduceActionFor______bar__Item__item___2: 155650 false) 
-	#(9 2 #reduceActionFor______bar__Item__item__1: 155649 false)
+	#(13 1 #reduceActionForName3: 286723 false) 
+	#(13 1 #reduceActionForName3: 286721 false) 
+	#(12 1 #reduceActionForUID1: 216065 false) 
+	#(10 0 #reduceActionFor______bar__Item__item___1: 147457 false) 
+	#(11 1 #liftFirstValue: 192514 false) 
+	#(11 1 #liftFirstValue: 192513 false) 
+	#(8 2 #reduceActionForAnnotation1: 119809 false) 
+	#(13 3 #reduceActionForName2: 286722 false) 
+	#(12 3 #reduceActionForUID2: 216066 false) 
+	#(8 3 #reduceActionForAnnotation2: 119810 false) 
+	#(10 2 #reduceActionFor______bar__Item__item___2: 147458 false) 
+	#(9 2 #reduceActionFor______bar__Item__item__1: 147457 false)
 	).
 ]
 
@@ -82,19 +82,18 @@ OlObjectAnnotationParser class >> scannerClass [
 ]
 
 { #category : #generated }
-OlObjectAnnotationParser class >> startingStateForEntityAnnotation [
-
+OlObjectAnnotationParser class >> startingStateForAnnotation [
 	^ 1
 ]
 
 { #category : #generated }
 OlObjectAnnotationParser class >> symbolNames [
-	^ #('"="' '"name"' '"uid"' '"|"' '<name>' '<uid>' 'B e g i n' 'EntityAnnotation' '("|" ''bar'' Item ''item'')' '("|" ''bar'' Item ''item'')*' 'Item' 'UID' 'Name' 'E O F' 'error')
+	^ #('"="' '"name"' '"uid"' '"|"' '<name>' '<uid>' 'B e g i n' 'Annotation' '("|" ''bar'' Item ''item'')' '("|" ''bar'' Item ''item'')*' 'Item' 'UID' 'Name' 'E O F' 'error')
 ]
 
 { #category : #generated }
 OlObjectAnnotationParser class >> symbolTypes [
-	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #OlObjectAnnotationNode #OlObjectAnnotationNode #OrderedCollection #OrderedCollection #OlObjectParseNode #OlUIDArgumentNode #OlNameValueNode #SmaCCToken #SmaCCErrorNode)
+	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #OlAnnotationNode #OlAnnotationNode #OrderedCollection #OrderedCollection #OlObjectParseNode #OlUIDArgumentNode #OlNameValueNode #SmaCCToken #SmaCCErrorNode)
 ]
 
 { #category : #generated }
@@ -121,10 +120,9 @@ OlObjectAnnotationParser class >> transitionTable [
 ]
 
 { #category : #'generated-reduction actions' }
-OlObjectAnnotationParser >> reduceActionForEntityAnnotation1: nodes [
-
+OlObjectAnnotationParser >> reduceActionForAnnotation1: nodes [
 	| result |
-	result := OlObjectAnnotationNode new.
+	result := OlAnnotationNode new.
 	result addNode: (nodes at: 1) to: result items.
 	result addTokens: ((nodes at: 2) at: 1) to: result bars.
 	result addNodes: ((nodes at: 2) at: 2) to: result items.
@@ -132,10 +130,9 @@ OlObjectAnnotationParser >> reduceActionForEntityAnnotation1: nodes [
 ]
 
 { #category : #'generated-reduction actions' }
-OlObjectAnnotationParser >> reduceActionForEntityAnnotation2: nodes [
-
+OlObjectAnnotationParser >> reduceActionForAnnotation2: nodes [
 	| result |
-	result := OlObjectAnnotationNode new.
+	result := OlAnnotationNode new.
 	result addNode: (nodes at: 1) to: result items.
 	result addTokens: ((nodes at: 2) at: 1) to: result bars.
 	result addNodes: ((nodes at: 2) at: 2) to: result items.

@@ -1,5 +1,5 @@
 Class {
-	#name : #OlObjectAnnotationNode,
+	#name : #OlAnnotationNode,
 	#superclass : #OlObjectParseNode,
 	#instVars : [
 		'items',
@@ -9,50 +9,49 @@ Class {
 }
 
 { #category : #generated }
-OlObjectAnnotationNode >> acceptVisitor: anEntityParseVisitor [
-
-	^ anEntityParseVisitor visitEntityAnnotation: self
+OlAnnotationNode >> acceptVisitor: anObjectParseVisitor [
+	^ anObjectParseVisitor visitAnnotation: self
 ]
 
 { #category : #generated }
-OlObjectAnnotationNode >> bars [
+OlAnnotationNode >> bars [
 
 	^ bars
 ]
 
 { #category : #generated }
-OlObjectAnnotationNode >> bars: anOrderedCollection [
+OlAnnotationNode >> bars: anOrderedCollection [
 
 	bars := anOrderedCollection
 ]
 
 { #category : #generated }
-OlObjectAnnotationNode >> compositeNodeVariables [
+OlAnnotationNode >> compositeNodeVariables [
 
 	^ #( #items )
 ]
 
 { #category : #generated }
-OlObjectAnnotationNode >> compositeTokenVariables [
+OlAnnotationNode >> compositeTokenVariables [
 
 	^ #( #bars )
 ]
 
 { #category : #'generated-initialize-release' }
-OlObjectAnnotationNode >> initialize [
+OlAnnotationNode >> initialize [
 	super initialize.
 	items := OrderedCollection new: 2.
 	bars := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-OlObjectAnnotationNode >> items [
+OlAnnotationNode >> items [
 
 	^ items
 ]
 
 { #category : #generated }
-OlObjectAnnotationNode >> items: anOrderedCollection [
+OlAnnotationNode >> items: anOrderedCollection [
 
 	self setParents: self items to: nil.
 	items := anOrderedCollection.
@@ -60,12 +59,12 @@ OlObjectAnnotationNode >> items: anOrderedCollection [
 ]
 
 { #category : #accessing }
-OlObjectAnnotationNode >> object [
+OlAnnotationNode >> object [
 	^ DbSoup detectUIDString36: self uid
 ]
 
 { #category : #accessing }
-OlObjectAnnotationNode >> uid [
+OlAnnotationNode >> uid [
 	^ self items
 		detect: [ :e | e isKindOf: OlUIDArgumentNode ]
 		ifFound: [ :uidArg | uidArg uid ]

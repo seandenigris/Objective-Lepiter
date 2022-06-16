@@ -5,7 +5,6 @@ Class {
 }
 
 { #category : #generated }
-OlObjectParseNode >> acceptVisitor: anEntityParseVisitor [
-
-	^ anEntityParseVisitor visitEntityParse: self
+OlObjectParseNode >> acceptVisitor: anObjectParseVisitor [
+	^ anObjectParseVisitor visitObjectParse: self
 ]

@@ -6,24 +6,21 @@ Trait {
 }
 
 { #category : #generated }
-TOlObjectParseNodeVisitor >> visitEntityAnnotation: anEntityAnnotation [
-
-	^ self visitEntityParse: anEntityAnnotation
-]
-
-{ #category : #generated }
-TOlObjectParseNodeVisitor >> visitEntityParse: anEntityParse [
-
-	^ self visitSmaCCParseNode: anEntityParse
+TOlObjectParseNodeVisitor >> visitAnnotation: anAnnotation [
+	^ self visitObjectParse: anAnnotation
 ]
 
 { #category : #generated }
 TOlObjectParseNodeVisitor >> visitNameValue: aNameValue [
+	^ self visitObjectParse: aNameValue
+]
 
-	^ self visitEntityParse: aNameValue
+{ #category : #generated }
+TOlObjectParseNodeVisitor >> visitObjectParse: anObjectParse [
+	^ self visitSmaCCParseNode: anObjectParse
 ]
 
 { #category : #generated }
 TOlObjectParseNodeVisitor >> visitUIDArgument: anUIDArgument [
-	^ self visitEntityParse: anUIDArgument
+	^ self visitObjectParse: anUIDArgument
 ]
