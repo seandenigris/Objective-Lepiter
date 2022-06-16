@@ -36,7 +36,7 @@ OlUIDArgumentNode >> name: aSmaCCToken [
 
 { #category : #generated }
 OlUIDArgumentNode >> tokenVariables [
-	^ #(#value #name #equals)
+	^ #(#name #equals #value)
 ]
 
 { #category : #accessing }

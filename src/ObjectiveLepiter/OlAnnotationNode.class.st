@@ -65,7 +65,7 @@ OlAnnotationNode >> items: anOrderedCollection [
 
 { #category : #accessing }
 OlAnnotationNode >> object [
-	^ DbSoup detectUIDString36: self uid
+	^ DbSoup detectUIDString36: self uid ifNone: [ nil ]
 ]
 
 { #category : #accessing }

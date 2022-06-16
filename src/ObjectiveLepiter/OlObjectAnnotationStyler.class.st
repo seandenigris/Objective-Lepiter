@@ -23,6 +23,44 @@ OlObjectAnnotationStyler class >> obsolete [
 ]
 
 { #category : #private }
+OlObjectAnnotationStyler >> renderedAttributeLabeled: aRopedText isValid: aBoolean [
+
+	^ GtButtonAttribute new
+		beAppend;
+		stencil: [ 
+			| button |
+			button := LeSnippetStylerVisitor 
+				textLinkButtonPadding: (BlInsets top: 2) 
+				margin: BlInsets empty
+				valid: aBoolean.
+			button aptitude glamorousCodeFont.
+			button
+				beSmallSize;
+				label: aRopedText;
+				action: aBoolean;
+				yourself ]
+]
+
+{ #category : #private }
+OlObjectAnnotationStyler >> renderedAttributeLabeled: aRopedText withAction: aBlock isValid: aBoolean [
+
+	^ GtButtonAttribute new
+		beAppend;
+		stencil: [ 
+			| button |
+			button := LeSnippetStylerVisitor 
+				textLinkButtonPadding: (BlInsets top: 2) 
+				margin: BlInsets empty
+				valid: aBoolean.
+			button aptitude glamorousCodeFont.
+			button
+				beSmallSize;
+				label: aRopedText;
+				action: aBlock;
+				yourself ]
+]
+
+{ #category : #private }
 OlObjectAnnotationStyler >> styleAutoHiding: anAnnotation [
 	"Add styling that hides the markup when it loses keyboard focus"
 	| first last range |
@@ -50,18 +88,18 @@ OlObjectAnnotationStyler >> styleRendered: anAnnotation [
 	| attribute |
 	anAnnotation hasUID ifFalse: [ ^ self ].
 	
-	attribute := (GtButtonAttribute new)
-		beAppend;
-		stencil:
-				[ | button label |
-					label := anAnnotation object displayString.
-					button := LeSnippetStylerVisitor textLinkButtonPadding: (BlInsets top: 2) margin: BlInsets empty.
-					button aptitude glamorousCodeFont.
-					button
-						beSmallSize;
-						label: label;
-						action: [ :aButton | aButton phlow spawnObject: anAnnotation object ].
-					button ].
+	attribute := anAnnotation object
+		ifNotNil: [ :obj | 
+			self 
+				renderedAttributeLabeled: obj displayString
+				withAction: [ :aButton | aButton phlow spawnObject: anAnnotation object ]
+				isValid: true ]
+		ifNil: [
+			self 
+				renderedAttributeLabeled: ('uid=', anAnnotation uid) asRopedText
+				withAction: [ :aButton | ]
+				isValid: false ].
+	
 	self composite text
 		attribute: attribute
 		from: anAnnotation parent startPosition

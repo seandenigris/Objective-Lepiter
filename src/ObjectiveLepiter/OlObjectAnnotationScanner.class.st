@@ -7,7 +7,7 @@ Class {
 { #category : #'generated-initialization' }
 OlObjectAnnotationScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
-	#(#(5 'name' 2) #(5 'uid' 3) #(6 'name' 2) #(6 'uid' 3))
+	#(#(6 'name' 2) #(6 'uid' 3))
 		do: [ :each | 
 			(keywordMap at: each first ifAbsentPut: [ Dictionary new ])
 				at: (each at: 2)
@@ -30,12 +30,7 @@ OlObjectAnnotationScanner >> scanForToken [
 	self step.
 	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(1) ].
 	currentCharacter == $| ifTrue: [ ^ self recordAndReportMatch: #(4) ].
-	currentCharacter isDigit
-		ifTrue: [ [ self recordMatch: #(6).
-			self step.
-			currentCharacter isAlphaNumeric ] whileTrue.
-			^ self reportLastMatch ].
-	currentCharacter isLetter
+	currentCharacter isUppercase
 		ifTrue: [ [ self recordMatch: #(5 6).
 			self step.
 			currentCharacter isDigit
@@ -43,6 +38,11 @@ OlObjectAnnotationScanner >> scanForToken [
 					self step.
 					currentCharacter isAlphaNumeric ] whileTrue.
 					^ self reportLastMatch ].
-			currentCharacter isLetter ] whileTrue ].
+			currentCharacter isLetter ] whileTrue.
+			^ self reportLastMatch ].
+	currentCharacter isAlphaNumeric
+		ifTrue: [ [ self recordMatch: #(6).
+			self step.
+			currentCharacter isAlphaNumeric ] whileTrue ].
 	^ self reportLastMatch
 ]

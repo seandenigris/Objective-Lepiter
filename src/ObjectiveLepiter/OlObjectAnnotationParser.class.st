@@ -15,7 +15,7 @@ OlObjectAnnotationParser class >> activate [
 
 { #category : #'generated-accessing' }
 OlObjectAnnotationParser class >> cacheId [
-	^'2022-06-16T08:50:24.028294-04:00'
+	^'2022-06-16T11:53:53.438199-04:00'
 ]
 
 { #category : #generated }
@@ -26,7 +26,7 @@ OlObjectAnnotationParser class >> definitionComment [
 %suffix Node;
 
 <name>
-	: <isLetter> +
+	: <isUppercase> <isLetter> *
 	;
 <uid>
 	: (<isLetter> | <isDigit>)+
@@ -39,11 +39,10 @@ Item
 	| UID
 	;
 UID
-	: (""uid"" 'name' ""="" 'equals')? <uid> 'value' {{UIDArgument}}
+	:""uid"" 'name' ""="" 'equals' <uid> 'value' {{UIDArgument}}
 	;
 Name
 	: (""name"" 'name' ""="" 'equals')? <name> 'value' {{NameValue}}
-	| ""name"" 'value' {{NameValue}}
 	;"
 ]
 
@@ -61,18 +60,16 @@ OlObjectAnnotationParser class >> obsolete [
 { #category : #generated }
 OlObjectAnnotationParser class >> reduceTable [
 ^#(
-	#(13 1 #reduceActionForName3: 286723 false) 
-	#(13 1 #reduceActionForName3: 286721 false) 
-	#(12 1 #reduceActionForUID1: 216065 false) 
-	#(10 0 #reduceActionFor______bar__Item__item___1: 147457 false) 
-	#(11 1 #liftFirstValue: 192514 false) 
-	#(11 1 #liftFirstValue: 192513 false) 
-	#(8 2 #reduceActionForAnnotation1: 119809 false) 
-	#(13 3 #reduceActionForName2: 286722 false) 
-	#(12 3 #reduceActionForUID2: 216066 false) 
-	#(8 3 #reduceActionForAnnotation2: 119810 false) 
-	#(10 2 #reduceActionFor______bar__Item__item___2: 147458 false) 
-	#(9 2 #reduceActionFor______bar__Item__item__1: 147457 false)
+	#(13 1 #reduceActionForName1: 296961 false) 
+	#(10 0 #reduceActionFor______bar__Item__item___1: 161793 false) 
+	#(11 1 #liftFirstValue: 206850 false) 
+	#(11 1 #liftFirstValue: 206849 false) 
+	#(8 2 #reduceActionForAnnotation1: 134145 false) 
+	#(13 3 #reduceActionForName2: 296962 false) 
+	#(12 3 #reduceActionForUID1: 230401 false) 
+	#(8 3 #reduceActionForAnnotation2: 134146 false) 
+	#(10 2 #reduceActionFor______bar__Item__item___2: 161794 false) 
+	#(9 2 #reduceActionFor______bar__Item__item__1: 161793 false)
 	).
 ]
 
@@ -99,23 +96,22 @@ OlObjectAnnotationParser class >> symbolTypes [
 { #category : #generated }
 OlObjectAnnotationParser class >> transitionTable [
 ^#(
-#[1 0 9 0 2 0 13 0 3 0 17 0 5 0 21 0 6 0 25 0 8 0 29 0 11 0 29 0 12 0 29 0 13] 
-#[1 0 41 0 1 0 6 0 4 0 6 0 14] 
-#[0 0 45 0 1] 
-#[0 0 10 0 4 0 14] 
-#[0 0 14 0 4 0 14] 
+#[1 0 9 0 2 0 13 0 3 0 17 0 5 0 21 0 8 0 25 0 11 0 25 0 12 0 25 0 13] 
+#[0 0 37 0 1] 
+#[0 0 41 0 1] 
+#[0 0 6 0 4 0 14] 
 #[0 0 0 0 14] 
-#[1 0 18 0 4 0 49 0 10 0 18 0 14] 
-#[0 0 22 0 4 0 14] 
+#[1 0 10 0 4 0 45 0 10 0 10 0 14] 
+#[0 0 14 0 4 0 14] 
+#[0 0 18 0 4 0 14] 
+#[0 0 49 0 5] 
+#[0 0 53 0 6] 
+#[1 0 57 0 4 0 61 0 9 0 22 0 14] 
 #[0 0 26 0 4 0 14] 
-#[0 0 53 0 5] 
-#[0 0 57 0 6] 
-#[1 0 61 0 4 0 65 0 9 0 30 0 14] 
-#[0 0 34 0 4 0 14] 
+#[0 0 30 0 4 0 14] 
+#[1 0 9 0 2 0 13 0 3 0 17 0 5 0 65 0 11 0 65 0 12 0 65 0 13 0 34 0 14] 
 #[0 0 38 0 4 0 14] 
-#[1 0 9 0 2 0 13 0 3 0 17 0 5 0 21 0 6 0 69 0 11 0 69 0 12 0 69 0 13 0 42 0 14] 
-#[0 0 46 0 4 0 14] 
-#[0 0 50 0 4 0 14]
+#[0 0 42 0 4 0 14]
 	).
 ]
 
@@ -141,6 +137,14 @@ OlObjectAnnotationParser >> reduceActionForAnnotation2: nodes [
 ]
 
 { #category : #'generated-reduction actions' }
+OlObjectAnnotationParser >> reduceActionForName1: nodes [
+	| result |
+	result := OlNameValueNode new.
+	result value: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
 OlObjectAnnotationParser >> reduceActionForName2: nodes [
 
 	| result |
@@ -152,24 +156,7 @@ OlObjectAnnotationParser >> reduceActionForName2: nodes [
 ]
 
 { #category : #'generated-reduction actions' }
-OlObjectAnnotationParser >> reduceActionForName3: nodes [
-
-	| result |
-	result := OlNameValueNode new.
-	result value: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
 OlObjectAnnotationParser >> reduceActionForUID1: nodes [
-	| result |
-	result := OlUIDArgumentNode new.
-	result value: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-OlObjectAnnotationParser >> reduceActionForUID2: nodes [
 	| result |
 	result := OlUIDArgumentNode new.
 	result name: (nodes at: 1).
