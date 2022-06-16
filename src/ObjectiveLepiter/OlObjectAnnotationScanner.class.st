@@ -17,12 +17,12 @@ OlObjectAnnotationScanner class >> initializeKeywordMap [
 
 { #category : #generated }
 OlObjectAnnotationScanner >> emptySymbolTokenId [
-	^ 20
+	^ 18
 ]
 
 { #category : #generated }
 OlObjectAnnotationScanner >> errorTokenId [
-	^ 21
+	^ 19
 ]
 
 { #category : #generated }

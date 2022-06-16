@@ -15,7 +15,7 @@ OlObjectAnnotationParser class >> activate [
 
 { #category : #'generated-accessing' }
 OlObjectAnnotationParser class >> cacheId [
-	^'2022-06-16T12:58:11.252527-04:00'
+	^'2022-06-16T16:04:37.347853-04:00'
 ]
 
 { #category : #generated }
@@ -43,7 +43,7 @@ label <labelText>
 	: [^\|\}\\]+
 	;
 Annotation 
-	: Identifier 'item' (""|"" 'bar' OptionalArgument 'item')* {{}}
+	: Identifier 'identifier' (""|"" 'bar' OptionalArgument 'optionalArgument')? {{}}
 	;
 OptionalArgument
 	: Label
@@ -83,19 +83,17 @@ OlObjectAnnotationParser class >> obsolete [
 { #category : #generated }
 OlObjectAnnotationParser class >> reduceTable [
 ^#(
-	#(19 1 #reduceActionForName1: 650241 false) 
-	#(12 0 #reduceActionFor______bar__OptionalArgument__item___1: 269313 false) 
-	#(17 1 #liftFirstValue: 553986 false) 
-	#(17 1 #liftFirstValue: 553985 false) 
-	#(10 2 #reduceActionForAnnotation1: 235521 false) 
-	#(19 3 #reduceActionForName2: 650242 false) 
-	#(18 3 #reduceActionForUID1: 583681 false) 
-	#(12 2 #reduceActionFor______bar__OptionalArgument__item___2: 269314 false) 
-	#(16 0 #reduceActionForSwitchToLabel1: 506881 true) 
-	#(11 2 #reduceActionFor______bar__OptionalArgument__item__1: 269313 false) 
-	#(13 1 #liftFirstValue: 315393 false) 
-	#(15 0 #reduceActionForSwitchToDefault1: 455681 true) 
-	#(14 5 #reduceActionForLabel1: 345089 false)
+	#(17 1 #reduceActionForName1: 668673 false) 
+	#(10 1 #reduceActionForAnnotation1: 235521 false) 
+	#(15 1 #liftFirstValue: 572418 false) 
+	#(15 1 #liftFirstValue: 572417 false) 
+	#(17 3 #reduceActionForName2: 668674 false) 
+	#(16 3 #reduceActionForUID1: 602113 false) 
+	#(14 0 #reduceActionForSwitchToLabel1: 525313 true) 
+	#(10 3 #reduceActionForAnnotation2: 235522 false) 
+	#(11 1 #liftFirstValue: 333825 false) 
+	#(13 0 #reduceActionForSwitchToDefault1: 474113 true) 
+	#(12 5 #reduceActionForLabel1: 363521 false)
 	).
 ]
 
@@ -111,39 +109,37 @@ OlObjectAnnotationParser class >> startingStateForAnnotation [
 
 { #category : #generated }
 OlObjectAnnotationParser class >> symbolNames [
-	^ #('"="' '"name"' '"uid"' '"|"' '<name>' '<uid>' '<label>' '<labelText>' 'B e g i n' 'Annotation' '("|" ''bar'' OptionalArgument ''item'')' '("|" ''bar'' OptionalArgument ''item'')*' 'OptionalArgument' 'Label' 'SwitchToDefault' 'SwitchToLabel' 'Identifier' 'UID' 'Name' 'E O F' 'error')
+	^ #('"="' '"name"' '"uid"' '"|"' '<name>' '<uid>' '<label>' '<labelText>' 'B e g i n' 'Annotation' 'OptionalArgument' 'Label' 'SwitchToDefault' 'SwitchToLabel' 'Identifier' 'UID' 'Name' 'E O F' 'error')
 ]
 
 { #category : #generated }
 OlObjectAnnotationParser class >> symbolTypes [
-	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #OlAnnotationNode #OlAnnotationNode #OrderedCollection #OrderedCollection #OlLabelArgumentNode #OlLabelArgumentNode nil nil #OlObjectParseNode #OlUIDArgumentNode #OlNameValueNode #SmaCCToken #SmaCCErrorNode)
+	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #OlAnnotationNode #OlAnnotationNode #OlLabelArgumentNode #OlLabelArgumentNode nil nil #OlObjectParseNode #OlUIDArgumentNode #OlNameValueNode #SmaCCToken #SmaCCErrorNode)
 ]
 
 { #category : #generated }
 OlObjectAnnotationParser class >> transitionTable [
 ^#(
-#[1 0 9 0 2 0 13 0 3 0 17 0 5 0 21 0 10 0 25 0 17 0 25 0 18 0 25 0 19] 
+#[1 0 9 0 2 0 13 0 3 0 17 0 5 0 21 0 10 0 25 0 15 0 25 0 16 0 25 0 17] 
 #[0 0 37 0 1] 
 #[0 0 41 0 1] 
-#[0 0 6 0 4 0 20] 
-#[0 0 0 0 20] 
-#[1 0 10 0 4 0 45 0 12 0 10 0 20] 
-#[0 0 14 0 4 0 20] 
-#[0 0 18 0 4 0 20] 
+#[0 0 6 0 4 0 18] 
+#[0 0 0 0 18] 
+#[1 0 45 0 4 0 10 0 18] 
+#[0 0 14 0 4 0 18] 
+#[0 0 18 0 4 0 18] 
 #[0 0 49 0 5] 
 #[0 0 53 0 6] 
-#[1 0 57 0 4 0 61 0 11 0 22 0 20] 
-#[0 0 26 0 4 0 20] 
-#[0 0 30 0 4 0 20] 
-#[1 0 65 0 7 0 69 0 13 0 69 0 14] 
-#[0 0 34 0 4 0 20] 
-#[1 0 38 0 1 0 77 0 16] 
-#[0 0 42 0 4 0 20] 
-#[0 0 46 0 4 0 20] 
-#[0 0 81 0 1] 
-#[1 0 50 0 8 0 85 0 15] 
-#[0 0 89 0 8] 
-#[0 0 54 0 4 0 20]
+#[1 0 57 0 7 0 61 0 11 0 61 0 12] 
+#[0 0 22 0 4 0 18] 
+#[0 0 26 0 4 0 18] 
+#[1 0 30 0 1 0 69 0 14] 
+#[0 0 34 0 18] 
+#[0 0 38 0 18] 
+#[0 0 73 0 1] 
+#[1 0 42 0 8 0 77 0 13] 
+#[0 0 81 0 8] 
+#[0 0 46 0 18]
 	).
 ]
 
@@ -151,9 +147,17 @@ OlObjectAnnotationParser class >> transitionTable [
 OlObjectAnnotationParser >> reduceActionForAnnotation1: nodes [
 	| result |
 	result := OlAnnotationNode new.
-	result addNode: (nodes at: 1) to: result items.
-	result addTokens: ((nodes at: 2) at: 1) to: result bars.
-	result addNodes: ((nodes at: 2) at: 2) to: result items.
+	result identifier: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+OlObjectAnnotationParser >> reduceActionForAnnotation2: nodes [
+	| result |
+	result := OlAnnotationNode new.
+	result identifier: (nodes at: 1).
+	result bar: (nodes at: 2).
+	result optionalArgument: (nodes at: 3).
 	^ result
 ]
 
@@ -205,32 +209,5 @@ OlObjectAnnotationParser >> reduceActionForUID1: nodes [
 	result name: (nodes at: 1).
 	result equals: (nodes at: 2).
 	result value: (nodes at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-OlObjectAnnotationParser >> reduceActionFor______bar__OptionalArgument__item__1: nodes [
-	| result |
-	result := Array new: 2.
-	result at: 1 put: (nodes at: 1).
-	result at: 2 put: (nodes at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-OlObjectAnnotationParser >> reduceActionFor______bar__OptionalArgument__item___1: nodes [
-	| result |
-	result := Array new: 2.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-OlObjectAnnotationParser >> reduceActionFor______bar__OptionalArgument__item___2: nodes [
-	| result |
-	result := nodes at: 1.
-	self add: ((nodes at: 2) at: 1) to: (result at: 1).
-	self add: ((nodes at: 2) at: 2) to: (result at: 2).
 	^ result
 ]

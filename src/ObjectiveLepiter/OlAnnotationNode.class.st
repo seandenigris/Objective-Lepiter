@@ -2,8 +2,9 @@ Class {
 	#name : #OlAnnotationNode,
 	#superclass : #OlObjectParseNode,
 	#instVars : [
-		'items',
-		'bars'
+		'identifier',
+		'bar',
+		'optionalArgument'
 	],
 	#category : #'ObjectiveLepiter-Annotation'
 }
@@ -14,26 +15,13 @@ OlAnnotationNode >> acceptVisitor: anObjectParseVisitor [
 ]
 
 { #category : #generated }
-OlAnnotationNode >> bars [
-
-	^ bars
+OlAnnotationNode >> bar [
+	^ bar
 ]
 
 { #category : #generated }
-OlAnnotationNode >> bars: anOrderedCollection [
-
-	bars := anOrderedCollection
-]
-
-{ #category : #generated }
-OlAnnotationNode >> compositeNodeVariables [
-	^ #(#items)
-]
-
-{ #category : #generated }
-OlAnnotationNode >> compositeTokenVariables [
-
-	^ #( #bars )
+OlAnnotationNode >> bar: aSmaCCToken [
+	bar := aSmaCCToken
 ]
 
 { #category : #accessing }
@@ -41,37 +29,43 @@ OlAnnotationNode >> hasUID [
 	^ self uid isNotNil
 ]
 
-{ #category : #'generated-initialize-release' }
-OlAnnotationNode >> initialize [
-	super initialize.
-	items := OrderedCollection new: 2.
-	bars := OrderedCollection new: 2.
+{ #category : #generated }
+OlAnnotationNode >> identifier [
+	^ identifier
 ]
 
 { #category : #generated }
-OlAnnotationNode >> items [
-
-	^ items
-]
-
-{ #category : #generated }
-OlAnnotationNode >> items: anOrderedCollection [
-	self setParents: self items to: nil.
-	items := anOrderedCollection.
-	self setParents: self items to: self
+OlAnnotationNode >> identifier: anOlObjectParseNode [
+	self identifier notNil ifTrue: [ self identifier parent: nil ].
+	identifier := anOlObjectParseNode.
+	self identifier notNil ifTrue: [ self identifier parent: self ]
 ]
 
 { #category : #accessing }
 OlAnnotationNode >> label [
-	^ self items
-		detect: [ :e | e isKindOf: OlLabelArgumentNode ]
-		ifFound: [ :arg | arg text ]
-		ifNone: [ nil ]
+	^ self optionalArgument ifNotNil: [ :arg | arg text ]
+]
+
+{ #category : #generated }
+OlAnnotationNode >> nodeVariables [
+	^ #(#identifier #optionalArgument)
 ]
 
 { #category : #accessing }
 OlAnnotationNode >> object [
 	^ DbSoup detectUIDString36: self uid ifNone: [ nil ]
+]
+
+{ #category : #generated }
+OlAnnotationNode >> optionalArgument [
+	^ optionalArgument
+]
+
+{ #category : #generated }
+OlAnnotationNode >> optionalArgument: anOlLabelArgumentNode [
+	self optionalArgument notNil ifTrue: [ self optionalArgument parent: nil ].
+	optionalArgument := anOlLabelArgumentNode.
+	self optionalArgument notNil ifTrue: [ self optionalArgument parent: self ]
 ]
 
 { #category : #accessing }
@@ -83,10 +77,12 @@ OlAnnotationNode >> renderedText [
 		ifNil: [ ('uid=', self uid) asRopedText ].
 ]
 
+{ #category : #generated }
+OlAnnotationNode >> tokenVariables [
+	^ #(#bar)
+]
+
 { #category : #accessing }
 OlAnnotationNode >> uid [
-	^ self items
-		detect: [ :e | e isKindOf: OlUIDArgumentNode ]
-		ifFound: [ :uidArg | uidArg uid ]
-		ifNone: [ nil ]
+	^ self identifier uid
 ]

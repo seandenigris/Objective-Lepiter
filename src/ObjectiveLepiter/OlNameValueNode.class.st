@@ -44,6 +44,12 @@ OlNameValueNode >> tokenVariables [
 	^ #( #value #name #equals )
 ]
 
+{ #category : #accessing }
+OlNameValueNode >> uid [
+	"There's either a name or UID, but not both"
+	^ nil
+]
+
 { #category : #generated }
 OlNameValueNode >> value [
 

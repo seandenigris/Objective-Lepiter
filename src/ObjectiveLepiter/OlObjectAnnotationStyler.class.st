@@ -23,25 +23,6 @@ OlObjectAnnotationStyler class >> obsolete [
 ]
 
 { #category : #private }
-OlObjectAnnotationStyler >> renderedAttributeLabeled: aRopedText isValid: aBoolean [
-
-	^ GtButtonAttribute new
-		beAppend;
-		stencil: [ 
-			| button |
-			button := LeSnippetStylerVisitor 
-				textLinkButtonPadding: (BlInsets top: 2) 
-				margin: BlInsets empty
-				valid: aBoolean.
-			button aptitude glamorousCodeFont.
-			button
-				beSmallSize;
-				label: aRopedText;
-				action: aBoolean;
-				yourself ]
-]
-
-{ #category : #private }
 OlObjectAnnotationStyler >> renderedAttributeLabeled: aRopedText withAction: aBlock isValid: aBoolean [
 
 	^ GtButtonAttribute new
@@ -116,8 +97,9 @@ OlObjectAnnotationStyler >> utility [
 	^ GtDocumentUtility
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 OlObjectAnnotationStyler >> visitAnnotation: anAnnotation [
+"Halt now."
 	self styleMarkup: anAnnotation.
 	self styleAutoHiding: anAnnotation.
 	self styleRendered: anAnnotation
