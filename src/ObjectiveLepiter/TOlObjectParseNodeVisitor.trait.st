@@ -11,6 +11,11 @@ TOlObjectParseNodeVisitor >> visitAnnotation: anAnnotation [
 ]
 
 { #category : #generated }
+TOlObjectParseNodeVisitor >> visitLabelArgument: aLabelArgument [
+	^ self visitObjectParse: aLabelArgument
+]
+
+{ #category : #generated }
 TOlObjectParseNodeVisitor >> visitNameValue: aNameValue [
 	^ self visitObjectParse: aNameValue
 ]

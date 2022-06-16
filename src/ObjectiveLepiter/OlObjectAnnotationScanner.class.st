@@ -7,7 +7,7 @@ Class {
 { #category : #'generated-initialization' }
 OlObjectAnnotationScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
-	#(#(6 'name' 2) #(6 'uid' 3))
+	#(#(6 'label' #(7 #(#default #lab))) #(6 'name' #(2 #(#default #lab))) #(6 'uid' #(3 #(#default #lab))))
 		do: [ :each | 
 			(keywordMap at: each first ifAbsentPut: [ Dictionary new ])
 				at: (each at: 2)
@@ -17,32 +17,43 @@ OlObjectAnnotationScanner class >> initializeKeywordMap [
 
 { #category : #generated }
 OlObjectAnnotationScanner >> emptySymbolTokenId [
-	^ 14
+	^ 20
 ]
 
 { #category : #generated }
 OlObjectAnnotationScanner >> errorTokenId [
-	^ 15
+	^ 21
 ]
 
 { #category : #generated }
 OlObjectAnnotationScanner >> scanForToken [
-	self step.
-	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(1) ].
-	currentCharacter == $| ifTrue: [ ^ self recordAndReportMatch: #(4) ].
-	currentCharacter isUppercase
-		ifTrue: [ [ self recordMatch: #(5 6).
-			self step.
-			currentCharacter isDigit
+	scope == #label
+		ifTrue: [ self step.
+			(currentCharacter <= $[
+				or: [ (currentCharacter between: $] and: ${) or: [ currentCharacter >= $~ ] ])
+				ifTrue: [ [ self recordMatch: #(8).
+					self step.
+					currentCharacter <= $[
+						or: [ (currentCharacter between: $] and: ${) or: [ currentCharacter >= $~ ] ] ]
+						whileTrue ].
+			^ self reportLastMatch ].
+	(#(#default #lab) includes: scope)
+		ifTrue: [ self step.
+			currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(1) ].
+			currentCharacter == $| ifTrue: [ ^ self recordAndReportMatch: #(4) ].
+			currentCharacter isUppercase
+				ifTrue: [ [ self recordMatch: #(5 6).
+					self step.
+					currentCharacter isDigit
+						ifTrue: [ [ self recordMatch: #(6).
+							self step.
+							currentCharacter isAlphaNumeric ] whileTrue.
+							^ self reportLastMatch ].
+					currentCharacter isLetter ] whileTrue.
+					^ self reportLastMatch ].
+			currentCharacter isAlphaNumeric
 				ifTrue: [ [ self recordMatch: #(6).
 					self step.
-					currentCharacter isAlphaNumeric ] whileTrue.
-					^ self reportLastMatch ].
-			currentCharacter isLetter ] whileTrue.
-			^ self reportLastMatch ].
-	currentCharacter isAlphaNumeric
-		ifTrue: [ [ self recordMatch: #(6).
-			self step.
-			currentCharacter isAlphaNumeric ] whileTrue ].
+					currentCharacter isAlphaNumeric ] whileTrue ] ].
 	^ self reportLastMatch
 ]

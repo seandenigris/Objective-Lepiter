@@ -91,12 +91,12 @@ OlObjectAnnotationStyler >> styleRendered: anAnnotation [
 	attribute := anAnnotation object
 		ifNotNil: [ :obj | 
 			self 
-				renderedAttributeLabeled: obj displayString
+				renderedAttributeLabeled: anAnnotation renderedText
 				withAction: [ :aButton | aButton phlow spawnObject: anAnnotation object ]
 				isValid: true ]
 		ifNil: [
 			self 
-				renderedAttributeLabeled: ('uid=', anAnnotation uid) asRopedText
+				renderedAttributeLabeled: anAnnotation renderedText
 				withAction: [ :aButton | ]
 				isValid: false ].
 	

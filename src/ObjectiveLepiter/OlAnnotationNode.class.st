@@ -27,8 +27,7 @@ OlAnnotationNode >> bars: anOrderedCollection [
 
 { #category : #generated }
 OlAnnotationNode >> compositeNodeVariables [
-
-	^ #( #items )
+	^ #(#items)
 ]
 
 { #category : #generated }
@@ -57,15 +56,31 @@ OlAnnotationNode >> items [
 
 { #category : #generated }
 OlAnnotationNode >> items: anOrderedCollection [
-
 	self setParents: self items to: nil.
 	items := anOrderedCollection.
 	self setParents: self items to: self
 ]
 
 { #category : #accessing }
+OlAnnotationNode >> label [
+	^ self items
+		detect: [ :e | e isKindOf: OlLabelArgumentNode ]
+		ifFound: [ :arg | arg text ]
+		ifNone: [ nil ]
+]
+
+{ #category : #accessing }
 OlAnnotationNode >> object [
 	^ DbSoup detectUIDString36: self uid ifNone: [ nil ]
+]
+
+{ #category : #accessing }
+OlAnnotationNode >> renderedText [
+	self label ifNotNil: [ :lbl | ^ lbl ].
+	
+	^ self object
+		ifNotNil: [ :obj | obj displayString asRopedText ]
+		ifNil: [ ('uid=', self uid) asRopedText ].
 ]
 
 { #category : #accessing }
