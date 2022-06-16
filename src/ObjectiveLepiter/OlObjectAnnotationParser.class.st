@@ -15,7 +15,7 @@ OlObjectAnnotationParser class >> activate [
 
 { #category : #'generated-accessing' }
 OlObjectAnnotationParser class >> cacheId [
-	^'2022-06-16T16:04:37.347853-04:00'
+	^'2022-06-16T16:55:06.602655-04:00'
 ]
 
 { #category : #generated }
@@ -25,22 +25,19 @@ OlObjectAnnotationParser class >> definitionComment [
 %prefix Ol;
 %suffix Node;
 
-%scopes default lab;
+%scopes default label;
 
-<name>
-	: <isUppercase> <isLetter> *
-	;
-<uid>
+default <uid>
 	: (<isLetter> | <isDigit>)+
 	;
-<label>
+default <labelKeyword>
 	: label
 	;
 default <eq>
 	: \=
 	;
 label <labelText>
-	: [^\|\}\\]+
+	: [^\|\}]+
 	;
 Annotation 
 	: Identifier 'identifier' (""|"" 'bar' OptionalArgument 'optionalArgument')? {{}}
@@ -49,7 +46,7 @@ OptionalArgument
 	: Label
 	;
 Label
-	: <label> 'name' SwitchToLabel ""="" 'equals' SwitchToDefault <labelText> 'value' {{LabelArgument}}
+	: <labelKeyword> 'name' SwitchToLabel ""="" 'equals' SwitchToDefault <labelText> 'value' {{LabelArgument}}
 	;
 SwitchToDefault
 	: [self scope: #default. nil]
@@ -65,7 +62,7 @@ UID
 	:""uid"" 'name' ""="" 'equals' <uid> 'value' {{UIDArgument}}
 	;
 Name
-	: (""name"" 'name' ""="" 'equals')? <name> 'value' {{NameValue}}
+	: ""name"" 'name' SwitchToLabel ""="" 'equals' SwitchToDefault <labelText> 'value' {{NameArgument}}
 	;"
 ]
 
@@ -83,17 +80,16 @@ OlObjectAnnotationParser class >> obsolete [
 { #category : #generated }
 OlObjectAnnotationParser class >> reduceTable [
 ^#(
-	#(17 1 #reduceActionForName1: 668673 false) 
-	#(10 1 #reduceActionForAnnotation1: 235521 false) 
-	#(15 1 #liftFirstValue: 572418 false) 
-	#(15 1 #liftFirstValue: 572417 false) 
-	#(17 3 #reduceActionForName2: 668674 false) 
-	#(16 3 #reduceActionForUID1: 602113 false) 
-	#(14 0 #reduceActionForSwitchToLabel1: 525313 true) 
-	#(10 3 #reduceActionForAnnotation2: 235522 false) 
-	#(11 1 #liftFirstValue: 333825 false) 
-	#(13 0 #reduceActionForSwitchToDefault1: 474113 true) 
-	#(12 5 #reduceActionForLabel1: 363521 false)
+	#(13 0 #reduceActionForSwitchToLabel1: 515073 true) 
+	#(9 1 #reduceActionForAnnotation1: 218113 false) 
+	#(14 1 #liftFirstValue: 562178 false) 
+	#(14 1 #liftFirstValue: 562177 false) 
+	#(12 0 #reduceActionForSwitchToDefault1: 463873 true) 
+	#(15 3 #reduceActionForUID1: 591873 false) 
+	#(9 3 #reduceActionForAnnotation2: 218114 false) 
+	#(10 1 #liftFirstValue: 316417 false) 
+	#(16 5 #reduceActionForName1: 658433 false) 
+	#(11 5 #reduceActionForLabel1: 346113 false)
 	).
 ]
 
@@ -109,37 +105,38 @@ OlObjectAnnotationParser class >> startingStateForAnnotation [
 
 { #category : #generated }
 OlObjectAnnotationParser class >> symbolNames [
-	^ #('"="' '"name"' '"uid"' '"|"' '<name>' '<uid>' '<label>' '<labelText>' 'B e g i n' 'Annotation' 'OptionalArgument' 'Label' 'SwitchToDefault' 'SwitchToLabel' 'Identifier' 'UID' 'Name' 'E O F' 'error')
+	^ #('"="' '"name"' '"uid"' '"|"' '<uid>' '<labelKeyword>' '<labelText>' 'B e g i n' 'Annotation' 'OptionalArgument' 'Label' 'SwitchToDefault' 'SwitchToLabel' 'Identifier' 'UID' 'Name' 'E O F' 'error')
 ]
 
 { #category : #generated }
 OlObjectAnnotationParser class >> symbolTypes [
-	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #OlAnnotationNode #OlAnnotationNode #OlLabelArgumentNode #OlLabelArgumentNode nil nil #OlObjectParseNode #OlUIDArgumentNode #OlNameValueNode #SmaCCToken #SmaCCErrorNode)
+	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #OlAnnotationNode #OlAnnotationNode #OlLabelArgumentNode #OlLabelArgumentNode nil nil #OlObjectParseNode #OlUIDArgumentNode #OlNameArgumentNode #SmaCCToken #SmaCCErrorNode)
 ]
 
 { #category : #generated }
 OlObjectAnnotationParser class >> transitionTable [
 ^#(
-#[1 0 9 0 2 0 13 0 3 0 17 0 5 0 21 0 10 0 25 0 15 0 25 0 16 0 25 0 17] 
+#[1 0 9 0 2 0 13 0 3 0 17 0 9 0 21 0 14 0 21 0 15 0 21 0 16] 
+#[1 0 6 0 1 0 33 0 13] 
 #[0 0 37 0 1] 
-#[0 0 41 0 1] 
-#[0 0 6 0 4 0 18] 
-#[0 0 0 0 18] 
-#[1 0 45 0 4 0 10 0 18] 
-#[0 0 14 0 4 0 18] 
-#[0 0 18 0 4 0 18] 
+#[0 0 0 0 17] 
+#[1 0 41 0 4 0 10 0 17] 
+#[0 0 14 0 4 0 17] 
+#[0 0 18 0 4 0 17] 
+#[0 0 45 0 1] 
 #[0 0 49 0 5] 
-#[0 0 53 0 6] 
-#[1 0 57 0 7 0 61 0 11 0 61 0 12] 
-#[0 0 22 0 4 0 18] 
-#[0 0 26 0 4 0 18] 
-#[1 0 30 0 1 0 69 0 14] 
-#[0 0 34 0 18] 
-#[0 0 38 0 18] 
-#[0 0 73 0 1] 
-#[1 0 42 0 8 0 77 0 13] 
-#[0 0 81 0 8] 
-#[0 0 46 0 18]
+#[1 0 53 0 6 0 57 0 10 0 57 0 11] 
+#[1 0 22 0 7 0 65 0 12] 
+#[0 0 26 0 4 0 17] 
+#[1 0 6 0 1 0 69 0 13] 
+#[0 0 30 0 17] 
+#[0 0 34 0 17] 
+#[0 0 73 0 7] 
+#[0 0 77 0 1] 
+#[0 0 38 0 4 0 17] 
+#[1 0 22 0 7 0 81 0 12] 
+#[0 0 85 0 7] 
+#[0 0 42 0 17]
 	).
 ]
 
@@ -174,19 +171,10 @@ OlObjectAnnotationParser >> reduceActionForLabel1: nodes [
 { #category : #'generated-reduction actions' }
 OlObjectAnnotationParser >> reduceActionForName1: nodes [
 	| result |
-	result := OlNameValueNode new.
-	result value: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-OlObjectAnnotationParser >> reduceActionForName2: nodes [
-
-	| result |
-	result := OlNameValueNode new.
+	result := OlNameArgumentNode new.
 	result name: (nodes at: 1).
-	result equals: (nodes at: 2).
-	result value: (nodes at: 3).
+	result equals: (nodes at: 3).
+	result value: (nodes at: 5).
 	^ result
 ]
 

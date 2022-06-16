@@ -7,7 +7,7 @@ Class {
 { #category : #'generated-initialization' }
 OlObjectAnnotationScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
-	#(#(6 'label' #(7 #(#default #lab))) #(6 'name' #(2 #(#default #lab))) #(6 'uid' #(3 #(#default #lab))))
+	#(#(5 'label' #(6 #(#default))))
 		do: [ :each | 
 			(keywordMap at: each first ifAbsentPut: [ Dictionary new ])
 				at: (each at: 2)
@@ -17,43 +17,84 @@ OlObjectAnnotationScanner class >> initializeKeywordMap [
 
 { #category : #generated }
 OlObjectAnnotationScanner >> emptySymbolTokenId [
-	^ 18
+	^ 17
 ]
 
 { #category : #generated }
 OlObjectAnnotationScanner >> errorTokenId [
-	^ 19
+	^ 18
+]
+
+{ #category : #generated }
+OlObjectAnnotationScanner >> scan1 [
+	self step.
+	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(1) ].
+	currentCharacter == $n
+		ifTrue: [ self recordMatch: #(5).
+			(self scanForString: 'ame')
+				ifTrue: [ self recordMatch: #(2 5).
+					self step ].
+			currentCharacter isAlphaNumeric
+				ifTrue: [ [ self recordMatch: #(5).
+					self step.
+					currentCharacter isAlphaNumeric ] whileTrue ].
+			^ self reportLastMatch ].
+	currentCharacter == $u
+		ifTrue: [ self recordMatch: #(5).
+			(self scanForString: 'id')
+				ifTrue: [ self recordMatch: #(3 5).
+					self step ].
+			currentCharacter isAlphaNumeric
+				ifTrue: [ [ self recordMatch: #(5).
+					self step.
+					currentCharacter isAlphaNumeric ] whileTrue ].
+			^ self reportLastMatch ].
+	currentCharacter == $| ifTrue: [ ^ self recordAndReportMatch: #(4) ].
+	currentCharacter isAlphaNumeric
+		ifTrue: [ [ self recordMatch: #(5).
+			self step.
+			currentCharacter isAlphaNumeric ] whileTrue ].
+	^ self reportLastMatch
 ]
 
 { #category : #generated }
 OlObjectAnnotationScanner >> scanForToken [
 	scope == #label
 		ifTrue: [ self step.
-			(currentCharacter <= $[
-				or: [ (currentCharacter between: $] and: ${) or: [ currentCharacter >= $~ ] ])
-				ifTrue: [ [ self recordMatch: #(8).
+			currentCharacter == $=
+				ifTrue: [ self recordMatch: #(1 7).
 					self step.
-					currentCharacter <= $[
-						or: [ (currentCharacter between: $] and: ${) or: [ currentCharacter >= $~ ] ] ]
-						whileTrue ].
-			^ self reportLastMatch ].
-	(#(#default #lab) includes: scope)
-		ifTrue: [ self step.
-			currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(1) ].
-			currentCharacter == $| ifTrue: [ ^ self recordAndReportMatch: #(4) ].
-			currentCharacter isUppercase
-				ifTrue: [ [ self recordMatch: #(5 6).
-					self step.
-					currentCharacter isDigit
-						ifTrue: [ [ self recordMatch: #(6).
+					(currentCharacter <= ${ or: [ currentCharacter >= $~ ])
+						ifTrue: [ [ self recordMatch: #(7).
 							self step.
-							currentCharacter isAlphaNumeric ] whileTrue.
-							^ self reportLastMatch ].
-					currentCharacter isLetter ] whileTrue.
+							currentCharacter <= ${ or: [ currentCharacter >= $~ ] ] whileTrue ].
 					^ self reportLastMatch ].
-			currentCharacter isAlphaNumeric
-				ifTrue: [ [ self recordMatch: #(6).
+			currentCharacter == $n
+				ifTrue: [ self recordMatch: #(7).
+					(self scanForString: 'ame')
+						ifTrue: [ self recordMatch: #(2 7).
+							self step ].
+					(currentCharacter <= ${ or: [ currentCharacter >= $~ ])
+						ifTrue: [ [ self recordMatch: #(7).
+							self step.
+							currentCharacter <= ${ or: [ currentCharacter >= $~ ] ] whileTrue ].
+					^ self reportLastMatch ].
+			currentCharacter == $u
+				ifTrue: [ self recordMatch: #(7).
+					(self scanForString: 'id')
+						ifTrue: [ self recordMatch: #(3 7).
+							self step ].
+					(currentCharacter <= ${ or: [ currentCharacter >= $~ ])
+						ifTrue: [ [ self recordMatch: #(7).
+							self step.
+							currentCharacter <= ${ or: [ currentCharacter >= $~ ] ] whileTrue ].
+					^ self reportLastMatch ].
+			currentCharacter == $| ifTrue: [ ^ self recordAndReportMatch: #(4) ].
+			(currentCharacter <= ${ or: [ currentCharacter >= $~ ])
+				ifTrue: [ [ self recordMatch: #(7).
 					self step.
-					currentCharacter isAlphaNumeric ] whileTrue ] ].
+					currentCharacter <= ${ or: [ currentCharacter >= $~ ] ] whileTrue ].
+			^ self reportLastMatch ].
+	scope == #default ifTrue: [ ^ self scan1 ].
 	^ self reportLastMatch
 ]

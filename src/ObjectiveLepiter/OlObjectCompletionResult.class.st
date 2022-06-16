@@ -62,14 +62,14 @@ OlObjectCompletionResult >> interval: anObject [
 OlObjectCompletionResult >> newSpotterElementFor: aController [
 
 	^ GtSpotterDropdownButtonStencil new
-		valuable: [ MpAddressBook uniqueInstance ];
+		valuable: [ DbSoup uniqueInstance ];
 		icon: BrGlamorousVectorIcons search;
 		spotterElementDo: [ :element |
 			element fireEvent: BrDropdownShowWish new. ];
 		spotterModelDo: [ :sm |
 			| initialText |
 			initialText := aController text 
-				copyFrom: self interval first 
+				copyFrom: self interval first + 'name=' size
 				to: self interval last - 1.
 			sm search: initialText asString ];
 		actOn: [ :evt :selection :element |

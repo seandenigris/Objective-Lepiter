@@ -32,10 +32,10 @@ OlObjectAnnotationCompletionVisitor >> visitArgument: anArgument [
 	^ self visitEntityParse: anArgument
 ]
 
-{ #category : #generated }
-OlObjectAnnotationCompletionVisitor >> visitNameValue: aNameValue [
+{ #category : #accessing }
+OlObjectAnnotationCompletionVisitor >> visitNameArgument: aNameValue [
 	| first last completion isCursorInside |
-	first := aNameValue valueStartPosition.
+	first := aNameValue startPosition.
 	last := aNameValue stopPosition + 1.
 	
 	isCursorInside := self position >= first and: [ self position < last ].

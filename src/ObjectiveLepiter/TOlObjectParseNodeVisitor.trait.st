@@ -16,8 +16,8 @@ TOlObjectParseNodeVisitor >> visitLabelArgument: aLabelArgument [
 ]
 
 { #category : #generated }
-TOlObjectParseNodeVisitor >> visitNameValue: aNameValue [
-	^ self visitObjectParse: aNameValue
+TOlObjectParseNodeVisitor >> visitNameArgument: aNameArgument [
+	^ self visitObjectParse: aNameArgument
 ]
 
 { #category : #generated }
