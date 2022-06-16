@@ -7,8 +7,8 @@ Class {
 { #category : #initialization }
 OlObjectAnnotationParser class >> activate [
 	LeParser annotationParsers
-		at: 'mpEntity'
-		put: [ :parser | parser spawnParser: self startingAt: self startingStateForEntityAnnotation ].
+		at: 'olObject'
+		put: [ :parser | parser spawnParser: self startingAt: self startingStateForAnnotation ].
 	OlObjectAnnotationStyler activate.
 	OlObjectAnnotationCompletionVisitor activate
 ]
@@ -54,7 +54,7 @@ OlObjectAnnotationParser class >> initialize [
 
 { #category : #initialization }
 OlObjectAnnotationParser class >> obsolete [
-	LeParser annotationParsers removeKey: 'mpEntity' ifAbsent: [  ].
+	LeParser annotationParsers removeKey: 'olObject' ifAbsent: [  ].
 	^ super obsolete
 ]
 
