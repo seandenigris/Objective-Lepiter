@@ -37,6 +37,11 @@ OlAnnotationNode >> compositeTokenVariables [
 	^ #( #bars )
 ]
 
+{ #category : #accessing }
+OlAnnotationNode >> hasUID [
+	^ self uid isNotNil
+]
+
 { #category : #'generated-initialize-release' }
 OlAnnotationNode >> initialize [
 	super initialize.

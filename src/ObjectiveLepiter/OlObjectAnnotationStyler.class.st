@@ -48,7 +48,7 @@ OlObjectAnnotationStyler >> styleMarkup: anAnnotation [
 OlObjectAnnotationStyler >> styleRendered: anAnnotation [
 	"Add styling for the (in this case clickable) rendered markup"
 	| attribute |
-	"anAnnotation hasWordSpecified ifFalse: [ ^ self ]."
+	anAnnotation hasUID ifFalse: [ ^ self ].
 	
 	attribute := (GtButtonAttribute new)
 		beAppend;
