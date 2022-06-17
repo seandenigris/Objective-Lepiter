@@ -12,11 +12,6 @@ OlObjectAnnotationCompletionVisitor class >> activate [
 ]
 
 { #category : #accessing }
-OlObjectAnnotationCompletionVisitor class >> initialize [
-	self activate
-]
-
-{ #category : #accessing }
 OlObjectAnnotationCompletionVisitor class >> obsolete [
 	LeContentCompletionVisitor additionalCompletionVisitors remove: self ifAbsent: [  ].
 	^ super obsolete

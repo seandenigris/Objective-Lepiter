@@ -12,11 +12,6 @@ OlObjectAnnotationStyler class >> activate [
 ]
 
 { #category : #accessing }
-OlObjectAnnotationStyler class >> initialize [
-	self activate
-]
-
-{ #category : #accessing }
 OlObjectAnnotationStyler class >> obsolete [
 	LeSnippetStylerVisitor additionalStylers remove: self ifAbsent: [  ].
 	^ super obsolete
