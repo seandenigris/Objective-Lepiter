@@ -15,7 +15,7 @@ OlObjectAnnotationParser class >> activate [
 
 { #category : #'generated-accessing' }
 OlObjectAnnotationParser class >> cacheId [
-	^'2022-06-16T16:55:06.602655-04:00'
+	^'2022-06-16T21:19:16.741827-04:00'
 ]
 
 { #category : #generated }
@@ -26,6 +26,12 @@ OlObjectAnnotationParser class >> definitionComment [
 %suffix Node;
 
 %scopes default label;
+
+%hierarchy Argument (
+	LabelArgument
+	NameArgument
+	UIDArgument
+);
 
 default <uid>
 	: (<isLetter> | <isDigit>)+
@@ -80,16 +86,16 @@ OlObjectAnnotationParser class >> obsolete [
 { #category : #generated }
 OlObjectAnnotationParser class >> reduceTable [
 ^#(
-	#(13 0 #reduceActionForSwitchToLabel1: 515073 true) 
-	#(9 1 #reduceActionForAnnotation1: 218113 false) 
-	#(14 1 #liftFirstValue: 562178 false) 
-	#(14 1 #liftFirstValue: 562177 false) 
-	#(12 0 #reduceActionForSwitchToDefault1: 463873 true) 
-	#(15 3 #reduceActionForUID1: 591873 false) 
-	#(9 3 #reduceActionForAnnotation2: 218114 false) 
-	#(10 1 #liftFirstValue: 316417 false) 
-	#(16 5 #reduceActionForName1: 658433 false) 
-	#(11 5 #reduceActionForLabel1: 346113 false)
+	#(13 0 #reduceActionForSwitchToLabel1: 584705 true) 
+	#(9 1 #reduceActionForAnnotation1: 287745 false) 
+	#(14 1 #liftFirstValue: 631810 false) 
+	#(14 1 #liftFirstValue: 631809 false) 
+	#(12 0 #reduceActionForSwitchToDefault1: 533505 true) 
+	#(15 3 #reduceActionForUID1: 661505 false) 
+	#(9 3 #reduceActionForAnnotation2: 287746 false) 
+	#(10 1 #liftFirstValue: 386049 false) 
+	#(16 5 #reduceActionForName1: 728065 false) 
+	#(11 5 #reduceActionForLabel1: 415745 false)
 	).
 ]
 
@@ -110,7 +116,7 @@ OlObjectAnnotationParser class >> symbolNames [
 
 { #category : #generated }
 OlObjectAnnotationParser class >> symbolTypes [
-	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #OlAnnotationNode #OlAnnotationNode #OlLabelArgumentNode #OlLabelArgumentNode nil nil #OlObjectParseNode #OlUIDArgumentNode #OlNameArgumentNode #SmaCCToken #SmaCCErrorNode)
+	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #OlAnnotationNode #OlAnnotationNode #OlLabelArgumentNode #OlLabelArgumentNode nil nil #OlArgumentNode #OlUIDArgumentNode #OlNameArgumentNode #SmaCCToken #SmaCCErrorNode)
 ]
 
 { #category : #generated }

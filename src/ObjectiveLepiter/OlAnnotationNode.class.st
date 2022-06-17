@@ -35,9 +35,9 @@ OlAnnotationNode >> identifier [
 ]
 
 { #category : #generated }
-OlAnnotationNode >> identifier: anOlObjectParseNode [
+OlAnnotationNode >> identifier: anOlArgumentNode [
 	self identifier notNil ifTrue: [ self identifier parent: nil ].
-	identifier := anOlObjectParseNode.
+	identifier := anOlArgumentNode.
 	self identifier notNil ifTrue: [ self identifier parent: self ]
 ]
 

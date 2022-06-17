@@ -11,13 +11,18 @@ TOlObjectParseNodeVisitor >> visitAnnotation: anAnnotation [
 ]
 
 { #category : #generated }
+TOlObjectParseNodeVisitor >> visitArgument: anArgument [
+	^ self visitObjectParse: anArgument
+]
+
+{ #category : #generated }
 TOlObjectParseNodeVisitor >> visitLabelArgument: aLabelArgument [
-	^ self visitObjectParse: aLabelArgument
+	^ self visitArgument: aLabelArgument
 ]
 
 { #category : #generated }
 TOlObjectParseNodeVisitor >> visitNameArgument: aNameArgument [
-	^ self visitObjectParse: aNameArgument
+	^ self visitArgument: aNameArgument
 ]
 
 { #category : #generated }
@@ -27,5 +32,5 @@ TOlObjectParseNodeVisitor >> visitObjectParse: anObjectParse [
 
 { #category : #generated }
 TOlObjectParseNodeVisitor >> visitUIDArgument: anUIDArgument [
-	^ self visitObjectParse: anUIDArgument
+	^ self visitArgument: anUIDArgument
 ]
