@@ -22,9 +22,14 @@ OlObjectAnnotationCompletionVisitor >> position [
 	^ self composite position
 ]
 
+{ #category : #generated }
+OlObjectAnnotationCompletionVisitor >> visitAnnotation: anAnnotation [
+	^ self visitObjectParse: anAnnotation
+]
+
 { #category : #accessing }
 OlObjectAnnotationCompletionVisitor >> visitArgument: anArgument [
-	^ self visitEntityParse: anArgument
+	^ self visitObjectParse: anArgument
 ]
 
 { #category : #accessing }
@@ -38,4 +43,15 @@ OlObjectAnnotationCompletionVisitor >> visitNameArgument: aNameValue [
 			
 	completion := OlObjectCompletionResult forInterval: (first to: last).
 	^ self composite completionResult: completion
+]
+
+{ #category : #visiting }
+OlObjectAnnotationCompletionVisitor >> visitSmaCCError: aSmaCCError [
+	| index token annotationType class className isMeta |
+	index := (1 to: aSmaCCError dismissedTokens size)
+		detect: [ :i | (aSmaCCError dismissedTokens at: i) stopPosition = self position ]
+		ifNone: [ 0 ].
+	annotationType := aSmaCCError parent name source.
+	Halt now.
+	^ self visitSmaCCParseNode: aSmaCCError
 ]
