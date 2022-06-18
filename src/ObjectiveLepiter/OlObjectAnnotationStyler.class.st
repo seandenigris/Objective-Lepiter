@@ -62,7 +62,6 @@ OlObjectAnnotationStyler >> styleMarkup: anAnnotation [
 OlObjectAnnotationStyler >> styleRendered: anAnnotation [
 	"Add styling for the (in this case clickable) rendered markup"
 	| attribute |
-	anAnnotation hasUID ifFalse: [ ^ self ].
 	
 	attribute := anAnnotation object
 		ifNotNil: [ :obj | 
