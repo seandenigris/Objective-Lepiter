@@ -27,6 +27,18 @@ MATPropertyOwner >> ensureUUID [
 ]
 
 { #category : #'*ObjectiveLepiter' }
+MATPropertyOwner >> gtViewLepiterOn: aView [
+	<gtView>
+	self lepiterPageID ifNil: [ ^ aView empty ].
+	
+	^ aView forward
+		title: 'Lepiter' translated;
+		priority: 75;
+		object: [ self ensureLepiterPage ];
+		view: #gtLiveFor:
+]
+
+{ #category : #'*ObjectiveLepiter' }
 MATPropertyOwner >> lepiterDB [
 	^ self propertyAt: #lepiterDB ifAbsent: [ ObjectiveLepiter database ]
 ]
