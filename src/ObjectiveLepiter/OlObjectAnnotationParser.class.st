@@ -13,6 +13,12 @@ OlObjectAnnotationParser class >> activate [
 	OlObjectAnnotationCompletionVisitor activate
 ]
 
+{ #category : #accessing }
+OlObjectAnnotationParser class >> argumentNames [
+	"For e.g. completion"
+	^ #(name uid label)
+]
+
 { #category : #'generated-accessing' }
 OlObjectAnnotationParser class >> cacheId [
 	^'2022-06-16T21:19:16.741827-04:00'
