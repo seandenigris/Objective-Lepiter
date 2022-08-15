@@ -69,6 +69,45 @@ OlObjectAnnotationCompletionVisitor >> valueForOption: optionName startingWith: 
 	^ self
 ]
 
+{ #category : #visiting }
+OlObjectAnnotationCompletionVisitor >> visitError: aSmaCCError at: index [
+
+	| token |
+	
+	WrapperSignal emit: { aSmaCCError. 'visit token at', index asString }.
+	
+	token := (aSmaCCError dismissedTokens at: index) value.
+	
+	token = '|' ifTrue: [ 
+		WrapperSignal emit: { aSmaCCError. 'token at', index asString, 'is |' }.
+		^ self
+			optionsStartingWith: ''
+			ignoring: (self previousOptionsFor: aSmaCCError) ].
+			
+	token = '=' ifTrue: [
+		| completion |
+		completion := OlObjectCompletionResult forInterval: (index to: index).
+		WrapperSignal emit: { aSmaCCError. 'token at', index asString, 'is =' }.
+		^ self composite completionResult: completion ].
+		
+	index > 1 ifTrue: [ 
+		WrapperSignal emit: { aSmaCCError. 'token at', index asString, ' > 1' }.
+		(aSmaCCError dismissedTokens at: index - 1) value = '|'
+			ifTrue: [ 
+				^ self
+					optionsStartingWith: token
+					ignoring: (self previousOptionsFor: aSmaCCError) ].
+					
+		(aSmaCCError dismissedTokens at: index - 1) value = '='
+			ifTrue: [ 
+				WrapperSignal emit: { aSmaCCError. 'token at', index asString, ' > 1 is =' }.
+				^ index > 2
+					ifTrue: [ self valueForOption: (aSmaCCError dismissedTokens at: index - 2) value startingWith: token ]
+					ifFalse: [ self valueForOption: aSmaCCError stackContents last items last name value startingWith: token ] ] ].
+					
+	^ self visitSmaCCParseNode: aSmaCCError
+]
+
 { #category : #accessing }
 OlObjectAnnotationCompletionVisitor >> visitNameArgument: aNameValue [
 	| first last completion isCursorInside |
@@ -80,66 +119,60 @@ OlObjectAnnotationCompletionVisitor >> visitNameArgument: aNameValue [
 	isCursorInside ifFalse: [ ^ self visitArgument: aNameValue ].
 			
 	completion := OlObjectCompletionResult forInterval: (first to: last).
+	StringSignal emit: 'spotting'.
 	^ self composite completionResult: completion
 ]
 
 { #category : #visiting }
 OlObjectAnnotationCompletionVisitor >> visitSmaCCError: aSmaCCError [
-	| index token |
+	| index |
+	
 	index := (1 to: aSmaCCError dismissedTokens size)
 		detect: [ :i | (aSmaCCError dismissedTokens at: i) stopPosition = self position ]
 		ifNone: [ 0 ].
-	index > 0
-		ifTrue:
-			[ 
-			token := (aSmaCCError dismissedTokens at: index) value.
-			token = '|'
-				ifTrue:
-					[ ^ self
-						optionsStartingWith: ''
-						ignoring: (self previousOptionsFor: aSmaCCError) ].
-			token = '='
-				ifTrue:
-					[ ^ index > 1
-						ifTrue: [ self valueForOption: (aSmaCCError dismissedTokens at: index - 1) value startingWith: '' ]
-						ifFalse: [ self valueForOption: aSmaCCError stackContents last items last name value startingWith: '' ] ].
-			index > 1
-				ifTrue:
-					[ (aSmaCCError dismissedTokens at: index - 1) value = '|'
-						ifTrue:
-							[ ^ self
-								optionsStartingWith: token
-								ignoring: (self previousOptionsFor: aSmaCCError) ].
-					(aSmaCCError dismissedTokens at: index - 1) value = '='
-						ifTrue:
-							[ ^ index > 2
-								ifTrue: [ self valueForOption: (aSmaCCError dismissedTokens at: index - 2) value startingWith: token ]
-								ifFalse: [ self valueForOption: aSmaCCError stackContents last items last name value startingWith: token ] ] ].
-			(('class' beginsWith: token)
-				and: [ aSmaCCError stackContents notEmpty and: [ aSmaCCError stackContents last isKindOf: LeClassAnnotationNode ] ])
-				ifTrue:
-					[ ^ self composite
-						addStream:
-							{GtInsertTextCompletionAction
-									labeled: (self strategy labelFor: 'class' withSearch: token)
-									completion: ('class' allButFirst: token size)
-									position: self position} asAsyncStream ] ].
-	index = 0
-		ifTrue:
-			[ aSmaCCError stackContents isEmpty
-				ifTrue:
-					[ ^ aSmaCCError parent colon stopPosition = self position
-						ifTrue:
-							[ self
-								optionsStartingWith: ''
-								ignoring: #() ]
-						ifFalse:
-							[ aSmaCCError errorToken stopPosition = self position
-								ifTrue:
-									[ self
-										optionsStartingWith: aSmaCCError errorToken value
-										ignoring: #() ] ] ] ].
+		
+	"StringSignal emit: 'visiting error at ', index asString.
+	WrapperSignal emit: aSmaCCError."
+		
+	index > 0 ifTrue: [ ^ self visitError: aSmaCCError at: index].
+			
+	index = 0 ifTrue: [ ^ self visitStartingError: aSmaCCError ].
 	
 	"LeAnnotations handle class name completion here.  Not sure difference vs. we handling it right during the name argument visit"																
+	^ self visitSmaCCParseNode: aSmaCCError
+]
+
+{ #category : #visiting }
+OlObjectAnnotationCompletionVisitor >> visitStartingError: aSmaCCError [
+	 aSmaCCError stackContents isEmpty ifTrue: [ 
+		WrapperSignal emit: { aSmaCCError. 'stack empty' }.
+		^ aSmaCCError parent colon stopPosition = self position
+			ifTrue: [ 
+				WrapperSignal emit: { aSmaCCError. 'colon' }.
+				self
+					optionsStartingWith: ''
+					ignoring: #() ]
+			ifFalse: [ 
+				WrapperSignal emit: { aSmaCCError. 'no colon' }.
+				aSmaCCError errorToken stopPosition = self position
+					ifTrue: [ 
+						self
+							optionsStartingWith: aSmaCCError errorToken value
+							ignoring: #() ] ] ].
+										
+	(aSmaCCError stackContents last isKindOf: SmaCCToken)
+		ifTrue: [ 
+			WrapperSignal emit: { aSmaCCError. 'stack token' }.
+			aSmaCCError stackContents last stopPosition = self position
+				ifTrue: [ 
+					| token |
+					WrapperSignal emit: { aSmaCCError. 'stack end' }.
+					token := aSmaCCError stackContents last value.
+					(token = '=' and: [ (aSmaCCError stackContents at: aSmaCCError stackContents size - 2) value = 'name' ])
+						ifTrue: [ 
+							| completion |
+							WrapperSignal emit: { aSmaCCError. 'stack token - yay!' }.
+							completion := OlObjectCompletionResult forInterval: (1 to: 1).
+							^ self composite completionResult: completion ] ] ].
 	^ self visitSmaCCParseNode: aSmaCCError
 ]
