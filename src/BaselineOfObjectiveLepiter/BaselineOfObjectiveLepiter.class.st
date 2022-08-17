@@ -1,3 +1,8 @@
+"
+# Icons
+We use the following icons from [Noun Project](https://thenounproject.com/browse/icons/term/inventory/):
+- identification by Numeralia Vita Zein
+"
 Class {
 	#name : #BaselineOfObjectiveLepiter,
 	#superclass : #BaselineOf,

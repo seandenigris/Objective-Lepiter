@@ -27,6 +27,18 @@ MATPropertyOwner >> ensureUUID [
 ]
 
 { #category : #'*ObjectiveLepiter' }
+MATPropertyOwner >> ensureUUIDDescription [
+	<magritteActionDescription>
+	
+	^ MAActionDescription new
+		action: #ensureUUID;
+		gtIcon: [ 
+			BaselineOfObjectiveLepiter loadGtIconFromRepositoryPath:'icons/noun-identification-4239883.png' ];
+		isLabelVisible: false;
+		yourself
+]
+
+{ #category : #'*ObjectiveLepiter' }
 MATPropertyOwner >> gtViewLepiterOn: aView [
 	<gtView>
 	self lepiterPageID ifNil: [ ^ aView empty ].
