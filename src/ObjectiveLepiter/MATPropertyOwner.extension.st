@@ -1,6 +1,24 @@
 Extension { #name : #MATPropertyOwner }
 
 { #category : #'*ObjectiveLepiter' }
+MATPropertyOwner >> clipUUID [
+
+	 ^ Clipboard clipboardText: self ensureUUID asString36
+]
+
+{ #category : #'*ObjectiveLepiter' }
+MATPropertyOwner >> clipUUIDDescription [
+	<magritteActionDescription>
+	
+	^ MAActionDescription new
+		action: #clipUUID;
+		gtIcon: [ 
+			BaselineOfObjectiveLepiter loadGtIconFromRepositoryPath:'icons/noun-identification-4239883.png' ];
+		isLabelVisible: false;
+		yourself
+]
+
+{ #category : #'*ObjectiveLepiter' }
 MATPropertyOwner >> ensureLepiterPage [
 
 	self lepiterPageID ifNil: [ 
@@ -24,18 +42,6 @@ MATPropertyOwner >> ensureUUID [
 	 ^ self 
 	 	propertyAt: #uuid
 	 	ifAbsentPut: [ UUIDGenerator next ]
-]
-
-{ #category : #'*ObjectiveLepiter' }
-MATPropertyOwner >> ensureUUIDDescription [
-	<magritteActionDescription>
-	
-	^ MAActionDescription new
-		action: #ensureUUID;
-		gtIcon: [ 
-			BaselineOfObjectiveLepiter loadGtIconFromRepositoryPath:'icons/noun-identification-4239883.png' ];
-		isLabelVisible: false;
-		yourself
 ]
 
 { #category : #'*ObjectiveLepiter' }
