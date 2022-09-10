@@ -12,6 +12,8 @@ GtWorldSpotterSearchStart >> gtSpotterContainingSubPartsFor: aStep [
 		wantsToDisplayOnEmptyQuery: true;
 		filter: LeSubstringFilter
 			item: [ :filter :context | 
-				self knowledgeBase pagesDo: filter ];
+				self knowledgeBase pagesWithNameDo: filter.
+				self knowledgeBase unnamedPagesDo: filter.
+				"self knowledgeBase pagesDo: filter" ];
 		itemName: #spotterItemName
 ]
