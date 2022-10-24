@@ -65,7 +65,7 @@ OlObjectAnnotationCompletionVisitor >> strategy [
 
 { #category : #accessing }
 OlObjectAnnotationCompletionVisitor >> valueForOption: optionName startingWith: aString [
-	"LeAnnotations use this for canned options like boolean. See other sender"
+	"LeAnnotationCompletionVisitor uses this for canned options like boolean. See other sender"
 	^ self
 ]
 
@@ -126,7 +126,7 @@ OlObjectAnnotationCompletionVisitor >> visitNameArgument: aNameValue [
 { #category : #visiting }
 OlObjectAnnotationCompletionVisitor >> visitSmaCCError: aSmaCCError [
 	| index |
-	
+	WrapperSignal emit: aSmaCCError.
 	index := (1 to: aSmaCCError dismissedTokens size)
 		detect: [ :i | (aSmaCCError dismissedTokens at: i) stopPosition = self position ]
 		ifNone: [ 0 ].
@@ -144,11 +144,12 @@ OlObjectAnnotationCompletionVisitor >> visitSmaCCError: aSmaCCError [
 
 { #category : #visiting }
 OlObjectAnnotationCompletionVisitor >> visitStartingError: aSmaCCError [
+	WrapperSignal emit: 'visit starting'.
 	 aSmaCCError stackContents isEmpty ifTrue: [ 
-		WrapperSignal emit: { aSmaCCError. 'stack empty' }.
+		WrapperSignal emit: 'stack empty'.
 		^ aSmaCCError parent colon stopPosition = self position
 			ifTrue: [ 
-				WrapperSignal emit: { aSmaCCError. 'colon' }.
+				WrapperSignal emit: 'colon'.
 				self
 					optionsStartingWith: ''
 					ignoring: #() ]
