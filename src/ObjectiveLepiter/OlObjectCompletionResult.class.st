@@ -71,7 +71,7 @@ OlObjectCompletionResult >> newSpotterElementFor: aController [
 			initialText := aController text 
 				copyFrom: self interval first + 'name=' size
 				to: self interval last - 1.
-			sm search: initialText asString ];
+			sm currentStep searchQuery: initialText asString ];
 		actOn: [ :evt :selection :element |
 			| task |
 			task := BlTaskAction new 
