@@ -15,6 +15,7 @@ MATPropertyOwner >> clipUUIDDescription [
 		gtIcon: [ 
 			BaselineOfObjectiveLepiter loadGtIconFromRepositoryPath:'icons/noun-identification-4239883.png' ];
 		isLabelVisible: false;
+		comment: 'Copy UUID string36 to clipboard';
 		yourself
 ]
 
