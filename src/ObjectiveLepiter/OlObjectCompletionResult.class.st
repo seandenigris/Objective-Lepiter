@@ -20,7 +20,7 @@ OlObjectCompletionResult class >> forInterval: anInterval [
 { #category : #accessing }
 OlObjectCompletionResult >> actionForEntity: anEntity [
 	| insertionAction text |
-	text := 'uid=', anEntity ensureUUID asString36.
+	text := 'uid=', anEntity olUID asString36.
 	insertionAction := GtInsertTextCompletionAction
 		labeled: text
 		completion: text

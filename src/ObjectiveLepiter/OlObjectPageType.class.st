@@ -18,7 +18,7 @@ OlObjectPageType class >> exampleEmptyPage [
 	| page model transcript |
 	transcript := QuTranscript new.
 	model := Object new.
-	model stub ensureUUID willReturn: 1.
+	model stub olUID willReturn: 1.
 	model stub uuid willReturn: 1.
 	model stub participants willReturn: #('Jack' 'Jill').
 	model stub transcript willReturn: transcript.
@@ -85,7 +85,7 @@ OlObjectPageType class >> subjectModel: anObject page: aLePage [
 	| referenceBuilder reference |
 	referenceBuilder := self modelReferenceForClass: anObject class.
 	reference := referenceBuilder value
-		uid: anObject ensureUUID;
+		uid: anObject olUID;
 		yourself.
 	^ self new
 		subjectModelReference: reference;

@@ -88,6 +88,14 @@ MATPropertyOwner >> newLepiterPage [
 ]
 
 { #category : #'*ObjectiveLepiter' }
+MATPropertyOwner >> olUID [
+
+	^ self ensureUUID
+	
+	"Implemented to have compatible interface with Lepiter snippets" 
+]
+
+{ #category : #'*ObjectiveLepiter' }
 MATPropertyOwner >> uuid [
 	
 	 ^ self propertyAt: #uuid ifAbsent: [ nil ]
