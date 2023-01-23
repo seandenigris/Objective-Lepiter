@@ -53,7 +53,7 @@ OlAnnotationNode >> nodeVariables [
 
 { #category : #accessing }
 OlAnnotationNode >> object [
-	^ DbSoup detectUIDString36: self uid ifNone: [ nil ]
+	^ DbSoup detectUID: self uid ifNone: [ nil ]
 ]
 
 { #category : #generated }
