@@ -20,6 +20,22 @@ MATPropertyOwner >> clipUUIDDescription [
 ]
 
 { #category : #'*ObjectiveLepiter' }
+MATPropertyOwner >> editLepiterPageDescription [
+	<magritteActionDescription>
+	^ MAActionDescription new
+		gtAction: [ :action :desc |
+			| button |
+			button := action button
+				icon: BrGlamorousVectorIcons clipboard;
+				yourself.
+			button action: [ :bElem |
+				bElem phlow spawnObject: self ensureLepiterPage ].
+			button ];
+		comment: 'View Lepiter Page';
+		yourself
+]
+
+{ #category : #'*ObjectiveLepiter' }
 MATPropertyOwner >> ensureLepiterPage [
 
 	self lepiterPageID ifNil: [ 
