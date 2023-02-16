@@ -9,3 +9,12 @@ LePage class >> dbObject: anObject [
 		type: type;
 		yourself
 ]
+
+{ #category : #'*ObjectiveLepiter' }
+LePage >> olAsReference [
+
+	^ OlLepiterPage new
+		databaseId: self database uuid asString36;
+		id: self uid asString36;
+		yourself
+]
