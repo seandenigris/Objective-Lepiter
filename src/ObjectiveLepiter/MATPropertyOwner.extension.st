@@ -54,14 +54,6 @@ MATPropertyOwner >> ensureLepiterPage [
 ]
 
 { #category : #'*ObjectiveLepiter' }
-MATPropertyOwner >> ensureUUID [
-	"See #uuid comment"
-	 ^ self 
-	 	propertyAt: #uuid
-	 	ifAbsentPut: [ UUIDGenerator next ]
-]
-
-{ #category : #'*ObjectiveLepiter' }
 MATPropertyOwner >> gtViewLepiterOn: aView [
 	<gtView>
 	self lepiterPageID ifNil: [ ^ aView empty ].
@@ -109,11 +101,4 @@ MATPropertyOwner >> olUID [
 	^ self ensureUUID
 	
 	"Implemented to have compatible interface with Lepiter snippets" 
-]
-
-{ #category : #'*ObjectiveLepiter' }
-MATPropertyOwner >> uuid [
-	
-	 ^ self propertyAt: #uuid ifAbsent: [ nil ]
-	"It is a stretch to place this in MATPropertyOwner, but it's only two methods, so in the interest of simplicity we'll put it here until someone complains"
 ]
