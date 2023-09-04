@@ -22,11 +22,19 @@ MATPropertyOwner >> clipUUIDDescription [
 { #category : #'*ObjectiveLepiter' }
 MATPropertyOwner >> editLepiterPageDescription [
 	<magritteActionDescription>
+	
+	| buttonStencil |
+	buttonStencil := [ 
+		| elpIcon |
+		elpIcon := BrGlamorousVectorIcons clipboard create.
+		self lepiterPageID ifNil: [ elpIcon background: Color veryLightGray ].
+		elpIcon ] asStencil.
+	
 	^ MAActionDescription new
 		gtAction: [ :action :desc |
 			| button |
 			button := action button
-				icon: BrGlamorousVectorIcons clipboard;
+				icon: buttonStencil;
 				yourself.
 			button action: [ :bElem |
 				bElem phlow spawnObject: self ensureLepiterPage ].
