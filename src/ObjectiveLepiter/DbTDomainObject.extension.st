@@ -1,26 +1,7 @@
-Extension { #name : #MATPropertyOwner }
+Extension { #name : #DbTDomainObject }
 
 { #category : #'*ObjectiveLepiter' }
-MATPropertyOwner >> clipUUID [
-
-	 ^ Clipboard clipboardText: self ensureUUID asString36
-]
-
-{ #category : #'*ObjectiveLepiter' }
-MATPropertyOwner >> clipUUIDDescription [
-	<magritteActionDescription>
-	
-	^ MAActionDescription new
-		action: #clipUUID;
-		gtIcon: [ 
-			BaselineOfObjectiveLepiter loadGtIconFromRepositoryPath:'icons/noun-identification-4239883.png' ];
-		isLabelVisible: false;
-		comment: 'Copy UUID string36 to clipboard';
-		yourself
-]
-
-{ #category : #'*ObjectiveLepiter' }
-MATPropertyOwner >> editLepiterPageDescription [
+DbTDomainObject >> editLepiterPageDescription [
 	<magritteActionDescription>
 	
 	| buttonStencil |
@@ -44,7 +25,7 @@ MATPropertyOwner >> editLepiterPageDescription [
 ]
 
 { #category : #'*ObjectiveLepiter' }
-MATPropertyOwner >> ensureLepiterPage [
+DbTDomainObject >> ensureLepiterPage [
 
 	self lepiterPageID ifNil: [ 
 		| result |
@@ -62,7 +43,7 @@ MATPropertyOwner >> ensureLepiterPage [
 ]
 
 { #category : #'*ObjectiveLepiter' }
-MATPropertyOwner >> gtViewLepiterOn: aView [
+DbTDomainObject >> gtViewLepiterOn: aView [
 	<gtView>
 	self lepiterPageID ifNil: [ ^ aView empty ].
 	
@@ -74,37 +55,37 @@ MATPropertyOwner >> gtViewLepiterOn: aView [
 ]
 
 { #category : #'*ObjectiveLepiter' }
-MATPropertyOwner >> lepiterDB [
+DbTDomainObject >> lepiterDB [
 	^ self propertyAt: #lepiterDB ifAbsent: [ ObjectiveLepiter database ]
 ]
 
 { #category : #'*ObjectiveLepiter' }
-MATPropertyOwner >> lepiterDB: aLeDatabase [
+DbTDomainObject >> lepiterDB: aLeDatabase [
 	self propertyAt: #lepiterDB put: aLeDatabase
 ]
 
 { #category : #'*ObjectiveLepiter' }
-MATPropertyOwner >> lepiterPageID [
+DbTDomainObject >> lepiterPageID [
 	^ self propertyAt: #lepiterPageID ifAbsent: [ ^ nil ]
 ]
 
 { #category : #'*ObjectiveLepiter' }
-MATPropertyOwner >> lepiterPageID: aUID [
+DbTDomainObject >> lepiterPageID: aUID [
 	^ self propertyAt: #lepiterPageID put: aUID
 ]
 
 { #category : #'*ObjectiveLepiter' }
-MATPropertyOwner >> lepiterPageTitle [
+DbTDomainObject >> lepiterPageTitle [
 	^ self displayString
 ]
 
 { #category : #'*ObjectiveLepiter' }
-MATPropertyOwner >> newLepiterPage [
+DbTDomainObject >> newLepiterPage [
 	^ LePage dbObject: self
 ]
 
 { #category : #'*ObjectiveLepiter' }
-MATPropertyOwner >> olUID [
+DbTDomainObject >> olUID [
 
 	^ self ensureUUID
 	
