@@ -1,6 +1,6 @@
 Class {
 	#name : #OlDummyObjectUIDReferenceForTesting,
-	#superclass : #OlObjectUIDReference,
+	#superclass : #DbAbstractObjectUIDReference,
 	#instVars : [
 		'source',
 		'object'
