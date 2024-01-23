@@ -93,12 +93,6 @@ OlObjectPageType class >> subjectModel: anObject page: aLePage [
 		yourself.
 ]
 
-{ #category : #initialization }
-OlObjectPageType class >> updatePrimaryDBPageTypes [
-
-	LeDatabasesRegistry defaultPrimaryDatabase updatePageTypes
-]
-
 { #category : #comparing }
 OlObjectPageType >> = anObject [
 	"Answer whether the receiver and anObject represent the same page type."
