@@ -31,6 +31,11 @@ TOlObjectParseNodeVisitor >> visitObjectParse: anObjectParse [
 ]
 
 { #category : #generated }
+TOlObjectParseNodeVisitor >> visitOlAnnotation: anAnnotation [
+	^ self visitAnnotation: anAnnotation
+]
+
+{ #category : #generated }
 TOlObjectParseNodeVisitor >> visitUIDArgument: anUIDArgument [
 	^ self visitArgument: anUIDArgument
 ]

@@ -11,7 +11,7 @@ Class {
 
 { #category : #generated }
 OlAnnotationNode >> acceptVisitor: anObjectParseVisitor [
-	^ anObjectParseVisitor visitAnnotation: self
+	^ anObjectParseVisitor visitOlAnnotation: self
 ]
 
 { #category : #generated }
