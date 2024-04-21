@@ -10,6 +10,11 @@ OlLabelArgumentNode >> acceptVisitor: anObjectParseVisitor [
 ]
 
 { #category : #accessing }
+OlLabelArgumentNode >> isLabel [
+	^ true
+]
+
+{ #category : #accessing }
 OlLabelArgumentNode >> text [
 	^ self value value asRopedText
 ]

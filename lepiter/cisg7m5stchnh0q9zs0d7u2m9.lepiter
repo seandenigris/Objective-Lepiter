@@ -84,7 +84,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2022-03-03T11:21:16.435177-05:00"
+												"dateAndTimeString" : "2024-04-19T21:23:44.341193-04:00"
 											}
 										},
 										"uid" : {
@@ -94,7 +94,7 @@
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "Per-object (e.g. for testing) with {{gtMethod:MATPropertyOwner>>#lepiterDB:}}"
+										"string" : "Per-object (e.g. for testing) with {{gtMethod:DbTDomainObject>>#lepiterDB:}}"
 									}
 								]
 							},
@@ -224,7 +224,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-03-18T15:30:04.131376-04:00"
+						"dateAndTimeString" : "2024-04-19T21:28:22.75744-04:00"
 					}
 				},
 				"uid" : {
@@ -234,7 +234,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "The main challenge is that either the domain model or Lepiter can change out from under the other side without warning, so we don't store any object pointers on either side, only UIDs.\n- Domain Model\n  - has the capability to generate UIDs for certain objects, like LivingLibrary's AuthoredWorks\n  - store the UID of their corresponding Lepiter page, like QuoteMe's Transcripts\n- Lepiter: The Lepiter pages referencing arbitrary objects do so via reference objects that store the object's UID as well as information about how/where to look for the object. See {{gtClass:OlObjectUIDReference}} for the default implementation which can be overriden in client libraries. An example is [Dynabook](https://github.com/seandenigris/Dynabook)'s {{gtClass:DbObjectUIDReference}}.\n\nIn order for everything to work, things need to be loaded in this order:\n1. Domain model code\n2. Domain model data\n3. Lepiter DB(s) containing custom pages which reference model objects"
+				"string" : "The main challenge is that either the domain model or Lepiter can change out from under the other side without warning, so we don't store any object pointers on either side, only UIDs.\n- Domain Model\n  - has the capability to generate UIDs for certain objects, like LivingLibrary's AuthoredWorks\n  - store the UID of their corresponding Lepiter page, like QuoteMe's Transcripts\n- Lepiter: The Lepiter pages referencing arbitrary objects do so via reference objects that store the object's UID as well as information about how/where to look for the object. See {{gtClass:DbAbstractObjectUIDReference}} for the boilerplate implementation which should be extended in client libraries. An example is [Dynabook](https://github.com/seandenigris/Dynabook)'s {{gtClass:DbObjectUIDReference}}.\n\nIn order for everything to work, things need to be loaded in this order:\n1. Domain model code\n2. Domain model data\n3. Lepiter DB(s) containing custom pages which reference model objects"
 			},
 			{
 				"__type" : "textSnippet",
@@ -266,7 +266,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-03-03T11:24:07.438231-05:00"
+									"dateAndTimeString" : "2024-04-19T21:22:46.811938-04:00"
 								}
 							},
 							"uid" : {
@@ -276,7 +276,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Currently, if you want an object to be able to have an associated Lepiter page, add the {{gtClass:MATPropertyOwner}} trait to its class. See the trait's extension methods from this library for API."
+							"string" : "Currently, if you want an object to be able to have an associated Lepiter page, add the {{gtClass:DbTDomainObject}} trait to its class."
 						}
 					]
 				},

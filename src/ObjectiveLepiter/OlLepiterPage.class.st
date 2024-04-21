@@ -5,7 +5,7 @@ Class {
 		'databaseIdString',
 		'idString'
 	],
-	#category : #ObjectiveLepiter
+	#category : #'ObjectiveLepiter-Wrappers'
 }
 
 { #category : #accessing }

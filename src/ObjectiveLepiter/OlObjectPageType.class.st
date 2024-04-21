@@ -8,7 +8,7 @@ Class {
 		'ModelReferenceBuilder',
 		'ModelReferenceBuilderMap'
 	],
-	#category : #ObjectiveLepiter
+	#category : #'ObjectiveLepiter-Wrappers'
 }
 
 { #category : #examples }

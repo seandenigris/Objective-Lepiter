@@ -17,6 +17,16 @@ OlObjectAnnotationStyler class >> obsolete [
 	^ super obsolete
 ]
 
+{ #category : #accessing }
+OlObjectAnnotationStyler >> elements [
+	^ self composite elements
+]
+
+{ #category : #accessing }
+OlObjectAnnotationStyler >> expanded [
+	^ self composite expanded
+]
+
 { #category : #private }
 OlObjectAnnotationStyler >> renderedAttributeLabeled: aRopedText withAction: aBlock isValid: aBoolean [
 
@@ -48,6 +58,29 @@ OlObjectAnnotationStyler >> styleAutoHiding: anAnnotation [
 		styleAutoHiding: range
 		and: range
 		whenOutside: anAnnotation parent sourceInterval 
+]
+
+{ #category : #accessing }
+OlObjectAnnotationStyler >> styleExpandingObject: anAnnotation [
+
+	| cacheKey attribute |
+	
+	anAnnotation showNode ifNil: [ ^ self ].
+	
+	cacheKey := anAnnotation source.
+	attribute := (GtCachedTextExpandButtonAttribute new)
+		isExpanded: (self expanded at: cacheKey ifAbsentPut: [ anAnnotation isExpanded ]);
+		attributesCreatingBlock:
+				[ (GtResizablePreviewAttribute new)
+						withCache: self elements key: cacheKey;
+						result: anAnnotation object;
+						showSelector: anAnnotation showSelector";
+						height: anAnnotation height" ];
+		onCachingDo: [ :aBoolean :theAttribute | self expanded at: cacheKey put: aBoolean ].
+	self text
+		attribute: attribute
+		from: anAnnotation parent startPosition
+		to: anAnnotation parent stopPosition
 ]
 
 { #category : #private }
@@ -96,5 +129,6 @@ OlObjectAnnotationStyler >> visitAnnotation: anAnnotation [
 "Halt now."
 	self styleMarkup: anAnnotation.
 	self styleAutoHiding: anAnnotation.
-	self styleRendered: anAnnotation
+	self styleRendered: anAnnotation.
+	self styleExpandingObject: anAnnotation
 ]
