@@ -5,7 +5,7 @@ Class {
 		'source',
 		'object'
 	],
-	#category : #ObjectiveLepiter
+	#category : #'ObjectiveLepiter-Support'
 }
 
 { #category : #accessing }

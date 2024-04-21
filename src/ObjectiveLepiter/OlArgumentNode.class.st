@@ -24,6 +24,21 @@ OlArgumentNode >> equals: aSmaCCToken [
 	equals := aSmaCCToken
 ]
 
+{ #category : #accessing }
+OlArgumentNode >> isExpanded [
+	^ false
+]
+
+{ #category : #accessing }
+OlArgumentNode >> isLabel [
+	^ false
+]
+
+{ #category : #accessing }
+OlArgumentNode >> isShow [
+	^ false
+]
+
 { #category : #generated }
 OlArgumentNode >> name [
 	^ name

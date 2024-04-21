@@ -4,7 +4,7 @@ Class {
 	#classVars : [
 		'LepiterDB'
 	],
-	#category : #ObjectiveLepiter
+	#category : #'ObjectiveLepiter-Support'
 }
 
 { #category : #accessing }
