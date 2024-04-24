@@ -100,6 +100,80 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-04-24T02:53:40.864241+00:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-04-24T03:15:39.432673+00:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "ospwTAbTDQCMViL/DafqKw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "{{olObject:uid=6occgnnvfo6dup6ujfop8h7r0|show=gtViewContactDetailsOn:|label=hi}}"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-04-24T02:52:16.757883+00:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-04-24T02:53:35.294422+00:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "vwHRfjDTDQCq3SfUD7MgUg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "{{olObject:uid=6occgnnvfo6dup6ujfop8h7r0}}"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
 						"dateAndTimeString" : "2024-04-21T00:08:32.536568-04:00"
 					}
 				},
@@ -185,7 +259,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-04-21T00:14:17.643987-04:00"
+						"dateAndTimeString" : "2024-04-21T00:14:47.544857-04:00"
 					}
 				},
 				"uid" : {
@@ -195,7 +269,224 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Next, based on the rendering, the parser seemed to recognize the arguments, but if they were used, the button wouldn't get rendered. It turned out there were errors in the styler, but they seem to be eaten by Lepiter. These were eventually chased down, but"
+				"string" : "Next, based on the rendering, the parser seemed to recognize the arguments, but if they were used, the button wouldn't get rendered. It turned out there were errors in the styler, but they seem to be eaten by Lepiter. These were eventually chased down, but it was a bit of hunt and peck due to the failure of the errors to propagate."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-04-21T20:36:42.247876-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-04-21T20:39:01.481765-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "Ht2sXQbTDQCOdaiDDafqKw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Tangentially, we uncovered a bug: if name= is autocompleted, a GT Search doesn't appear until the user starts typing the name, and the UID is inserted correctly on selection. However, if the user manually types in `name=`, the search shows up right away, and after selection, the uid is inserted in the wrong place i.e. at the very start of the annotation, like this: `uid=abc123{{olObject:name=}}`"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-04-24T01:24:05.772614+00:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-04-24T01:24:05.772614+00:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "sPlyQy/TDQCUUwEAD7MgUg=="
+				},
+				"code" : "MemoryLogger startFor: WrapperSignal."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-04-24T01:13:54.002571+00:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-04-24T01:24:05.798768+00:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "ARz8Hi/TDQCwv/qjCxpV0A=="
+				},
+				"code" : "MemoryLogger stop."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-04-24T02:14:58.959462+00:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-04-24T02:16:32.321343+00:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "uOpu+S/TDQCdLsKwD7MgUg=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "{{gtMethod:OlObjectAnnotationCompletionVisitor>>visitNameArgument:}} means that **a user is typing a name argument**, so we pass its interval to the completion result, because that's what we are going to replace"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-04-24T02:16:20.630616+00:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-04-24T02:16:20.630616+00:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "iiBN/i/TDQCg4USvD7MgUg=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : ""
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-04-24T02:14:42.366124+00:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-04-24T02:14:54.287606+00:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "GLhx+C/TDQCcrYqpD7MgUg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Completion Visiting"
 			}
 		]
 	},
