@@ -15,7 +15,7 @@ LePharoSnippetViewModel >> initializeCoderAddOns: aCoderViewModel [
 	(self snippetModel page type isKindOf: OlObjectPageType) ifTrue: [
 		aCoderViewModel localBindings
 			localAt: #thisObject
-			put: self snippetModel page type subjectModel ].
+			put: self snippetModel page olObject ].
 
 	aCoderViewModel
 		"Create New snippet (after the current snippet)"

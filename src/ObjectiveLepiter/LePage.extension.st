@@ -18,3 +18,11 @@ LePage >> olAsReference [
 		id: self uid asString36;
 		yourself
 ]
+
+{ #category : #'*ObjectiveLepiter' }
+LePage >> olObject [
+
+	self type isDbObjectPageType ifFalse: [ ^ nil ].
+	
+	^ self type subjectModel
+]
