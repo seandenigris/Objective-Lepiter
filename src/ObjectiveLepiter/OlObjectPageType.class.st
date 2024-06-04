@@ -72,7 +72,7 @@ OlObjectPageType class >> modelReferenceForClass: aClass [
 		ifAbsent: [ 
 			aClass superclass
 				ifNotNil: [ :supr | self modelReferenceForClass: supr ]
-				ifNil: [ self error: 'no builder for ', aClass name ] ]
+				ifNil: [ self error: 'no builder for ', aClass name, '. You can add one with #modelReferenceForClass:builder:' ] ]
 ]
 
 { #category : #accessing }
