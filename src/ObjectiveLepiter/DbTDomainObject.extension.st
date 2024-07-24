@@ -4,30 +4,40 @@ Extension { #name : #DbTDomainObject }
 DbTDomainObject >> editLepiterPageDescription [
 	<magritteActionDescription>
 	
-	| buttonStencil |
-	buttonStencil := [ 
+	^ self 
+		editLepiterPageDescriptionSpawning: [ self ensureLepiterPage ] 
+		icon: BrGlamorousVectorIcons note  
+		deemphasizedUnless: self hasLepiterPage
+		tooltip: 'View Lepiter Page'
+]
+
+{ #category : #'*ObjectiveLepiter' }
+DbTDomainObject >> editLepiterPageDescriptionSpawning: aValuable icon: anIconStencil deemphasizedUnless: aBoolean tooltip: aString [
+
+	| iconStencil |
+	iconStencil := [ 
 		| elpIcon |
-		elpIcon := BrGlamorousVectorIcons clipboard create.
-		self lepiterPageID ifNil: [ elpIcon background: Color veryLightGray ].
+		elpIcon := anIconStencil create.
+		aBoolean ifFalse: [ elpIcon background: Color veryLightGray ].
 		elpIcon ] asStencil.
 	
 	^ MAActionDescription new
 		gtAction: [ :action :desc |
 			| button |
 			button := action button
-				icon: buttonStencil;
+				icon: iconStencil;
 				yourself.
 			button action: [ :bElem |
-				bElem phlow spawnObject: self ensureLepiterPage ].
+				bElem phlow spawnObject: aValuable value ].
 			button ];
-		comment: 'View Lepiter Page';
+		comment: aString;
 		yourself
 ]
 
 { #category : #'*ObjectiveLepiter' }
 DbTDomainObject >> ensureLepiterPage [
 
-	self lepiterPageID ifNil: [ 
+	self hasLepiterPage ifFalse: [ 
 		| result |
 		result := self lepiterDB addPage: self newLepiterPage.
 		self lepiterPageID: result uid.
@@ -45,13 +55,19 @@ DbTDomainObject >> ensureLepiterPage [
 { #category : #'*ObjectiveLepiter' }
 DbTDomainObject >> gtViewLepiterOn: aView [
 	<gtView>
-	self lepiterPageID ifNil: [ ^ aView empty ].
+	self hasLepiterPage ifFalse: [ ^ aView empty ].
 	
 	^ aView forward
 		title: 'Lepiter' translated;
 		priority: 75;
 		object: [ self ensureLepiterPage ];
 		view: #gtLiveFor:
+]
+
+{ #category : #'*ObjectiveLepiter' }
+DbTDomainObject >> hasLepiterPage [
+
+	^ self lepiterPageID isNotNil
 ]
 
 { #category : #'*ObjectiveLepiter' }
