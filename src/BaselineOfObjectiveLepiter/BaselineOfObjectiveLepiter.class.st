@@ -15,14 +15,14 @@ BaselineOfObjectiveLepiter >> baseline: spec [
 
 	spec for: #'common' do: [
 		spec 
-			baseline: 'DynabookFoundation' with: [
+			baseline: #'DynabookFoundation' with: [
 				spec repository: 'github://seandenigris/Dynabook-Foundation' ];
-			baseline: 'Magritte' with: [
+			baseline: #'Magritte' with: [
 				spec repository: 'github://seandenigris/Magritte' ];
-			baseline: 'Mocketry' with: [
+			baseline: #'Mocketry' with: [
 				spec repository: 'github://dionisiydk/Mocketry' ];
-			baseline: 'PharoEnhancements' with: [
+			baseline: #'PharoEnhancements' with: [
 				spec repository: 'github://seandenigris/Pharo-Enhancements' ].
-		spec package: 'ObjectiveLepiter' with: [
-				spec requires: #('DynabookFoundation' 'Magritte' 'Mocketry' 'PharoEnhancements'). ]. ].
+		spec package: #'ObjectiveLepiter' with: [
+				spec requires: #(#'DynabookFoundation' #'Magritte' #'Mocketry' #'PharoEnhancements'). ]. ].
 ]
