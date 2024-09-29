@@ -87,7 +87,7 @@ DbTDomainObject >> lepiterPageID [
 
 { #category : #'*ObjectiveLepiter' }
 DbTDomainObject >> lepiterPageID: aUID [
-	^ self propertyAt: #lepiterPageID put: aUID
+	^ self propertyAt: #lepiterPageID putRemovingNil: aUID
 ]
 
 { #category : #'*ObjectiveLepiter' }
