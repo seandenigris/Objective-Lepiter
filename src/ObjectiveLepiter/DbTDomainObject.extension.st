@@ -5,7 +5,7 @@ DbTDomainObject >> editLepiterPageDescription [
 	<magritteActionDescription>
 	
 	^ self 
-		editLepiterPageDescriptionSpawning: [ self ensureLepiterPage ] 
+		editLepiterPageDescriptionSpawning: [ :anObject | anObject ensureLepiterPage ] 
 		icon: BrGlamorousVectorIcons note  
 		deemphasizedUnless: self hasLepiterPage
 		tooltip: 'View Lepiter Page'
@@ -22,13 +22,13 @@ DbTDomainObject >> editLepiterPageDescriptionSpawning: aValuable icon: anIconSte
 		elpIcon ] asStencil.
 	
 	^ MAActionDescription new
-		gtAction: [ :action :desc |
+		gtAction: [ :action :anObject :desc |
 			| button |
 			button := action button
 				icon: iconStencil;
 				yourself.
 			button action: [ :bElem |
-				bElem phlow spawnObject: aValuable value ].
+				bElem phlow spawnObject: (aValuable cull: anObject) ].
 			button ];
 		comment: aString;
 		yourself
