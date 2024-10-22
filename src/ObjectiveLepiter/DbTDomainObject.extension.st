@@ -7,23 +7,24 @@ DbTDomainObject >> editLepiterPageDescription [
 	^ self 
 		editLepiterPageDescriptionSpawning: [ :anObject | anObject ensureLepiterPage ] 
 		icon: BrGlamorousVectorIcons note  
-		deemphasizedUnless: self hasLepiterPage
+		deemphasizedUnless: [ :obj | obj hasLepiterPage ]
 		tooltip: 'View Lepiter Page'
 ]
 
 { #category : #'*ObjectiveLepiter' }
-DbTDomainObject >> editLepiterPageDescriptionSpawning: aValuable icon: anIconStencil deemphasizedUnless: aBoolean tooltip: aString [
+DbTDomainObject >> editLepiterPageDescriptionSpawning: aValuable icon: anIconStencil deemphasizedUnless: aBooleanValuable tooltip: aString [
 
 	| iconStencil |
-	iconStencil := [ 
+	iconStencil := [ :obj |
 		| elpIcon |
 		elpIcon := anIconStencil create.
-		aBoolean ifFalse: [ elpIcon background: Color veryLightGray ].
+		(aBooleanValuable cull: obj) ifFalse: [ elpIcon background: Color veryLightGray ].
 		elpIcon ] asStencil.
 	
 	^ MAActionDescription new
 		gtAction: [ :action :anObject :desc |
 			| button |
+			iconStencil arguments: { anObject }.
 			button := action button
 				icon: iconStencil;
 				yourself.
