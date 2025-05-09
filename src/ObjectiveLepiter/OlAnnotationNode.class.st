@@ -89,6 +89,16 @@ OlAnnotationNode >> labelNode [
 		ifNone: [ nil ]
 ]
 
+{ #category : #'as yet unclassified' }
+OlAnnotationNode >> matchesUidString36: aString [
+	"Fast object lookup that avoids searching DbSoup which is significantly more expensive. So something like:
+		`aLargeCollection detect: [ :e | thisNode object = e ]`
+	becomes:
+		`aLargeCollection detect: [ :e | thisNode matchesUidString36: e uuid asString36 ]`"
+
+	^ self uid = aString
+]
+
 { #category : #generated }
 OlAnnotationNode >> nodeVariables [
 	^ #(#identifier)

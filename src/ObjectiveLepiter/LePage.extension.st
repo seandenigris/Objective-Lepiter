@@ -26,3 +26,9 @@ LePage >> olObject [
 	
 	^ self type subjectModel
 ]
+
+{ #category : #'*ObjectiveLepiter' }
+LePage >> olObjectReferences [
+	^ self allChildrenTextSnippets
+		flatCollect: [ :aTextSnippet | aTextSnippet ast // OlAnnotationNode ]
+]

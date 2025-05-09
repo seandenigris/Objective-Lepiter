@@ -102,6 +102,27 @@ DbTDomainObject >> newLepiterPage [
 ]
 
 { #category : #'*ObjectiveLepiter' }
+DbTDomainObject >> olReferences [
+
+	^ LeDatabasesRegistry uniqueInstance defaultLogicalDatabase pages select: [ :p | 
+		p olObjectReferences anySatisfy: [ :node | 
+			node matchesUidString36: self uuid asString36 ] ]
+]
+
+{ #category : #'*ObjectiveLepiter' }
+DbTDomainObject >> olReferencesGtViewFor: aView [
+	<gtView>
+	
+	self olReferences ifEmpty: [ ^ aView empty ].
+	
+	^ aView list
+		title: 'ObjLep Refs';
+		priority: 67;
+		items: [ self olReferences ];
+		actionUpdateButton
+]
+
+{ #category : #'*ObjectiveLepiter' }
 DbTDomainObject >> olUID [
 
 	^ self ensureUUID
