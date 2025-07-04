@@ -82,6 +82,13 @@ DbTDomainObject >> lepiterDB: aLeDatabase [
 ]
 
 { #category : #'*ObjectiveLepiter' }
+DbTDomainObject >> lepiterPageEnsureRemoved [
+
+	self hasLepiterPage ifFalse: [ ^ self ].
+	self ensureLepiterPage removeSelf.
+]
+
+{ #category : #'*ObjectiveLepiter' }
 DbTDomainObject >> lepiterPageID [
 	^ self propertyAt: #lepiterPageID ifAbsent: [ ^ nil ]
 ]
