@@ -27,6 +27,7 @@ DbTDomainObject >> editLepiterPageDescriptionSpawning: aValuable icon: anIconSte
 			iconStencil arguments: { anObject }.
 			button := action button
 				icon: iconStencil;
+				tooltip: aString;
 				yourself.
 			button action: [ :bElem |
 				bElem phlow spawnObject: (aValuable cull: anObject) ].
