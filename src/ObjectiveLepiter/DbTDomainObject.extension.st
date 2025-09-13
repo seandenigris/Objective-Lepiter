@@ -114,7 +114,7 @@ DbTDomainObject >> olReferences [
 
 	^ LeDatabasesRegistry uniqueInstance defaultLogicalDatabase pages select: [ :p | 
 		p olObjectReferences anySatisfy: [ :node | 
-			node matchesUidString36: self uuid asString36 ] ]
+			node matchesUidString36: self ensureUUID asString36 ] ]
 ]
 
 { #category : #'*ObjectiveLepiter' }
