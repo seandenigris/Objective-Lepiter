@@ -2,22 +2,24 @@
 Adapted from {{gtClass:GtCalendarCompletionResult}}
 "
 Class {
-	#name : #OlObjectCompletionResult,
-	#superclass : #GtCompletionResult,
+	#name : 'OlObjectCompletionResult',
+	#superclass : 'GtCompletionResult',
 	#instVars : [
 		'interval'
 	],
-	#category : #'ObjectiveLepiter-Annotation'
+	#category : 'ObjectiveLepiter-Annotation',
+	#package : 'ObjectiveLepiter',
+	#tag : 'Annotation'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OlObjectCompletionResult class >> forInterval: anInterval [
 	^ self new
 		interval: anInterval;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectCompletionResult >> actionForEntity: anEntity [
 	| insertionAction text |
 	text := 'uid=', anEntity olUID asString36.
@@ -40,25 +42,25 @@ OlObjectCompletionResult >> actionForEntity: anEntity [
 	"Adapted from GtCalendarCompletionResult>>#actionForDate:"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectCompletionResult >> hasCompletionActions [
 	"This was needed for completion to appear. Same implementation as GtCalendarCompletionResult"
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectCompletionResult >> interval [
 
 	^ interval
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectCompletionResult >> interval: anObject [
 
 	interval := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectCompletionResult >> newSpotterElementFor: aController [
 
 	^ GtSpotterDropdownButtonStencil new
@@ -92,7 +94,7 @@ OlObjectCompletionResult >> newSpotterElementFor: aController [
 		create.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectCompletionResult >> showOn: aController [
 	| element showTask |
 	element := self newSpotterElementFor: aController.

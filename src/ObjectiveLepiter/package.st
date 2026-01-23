@@ -1,1 +1,1 @@
-Package { #name : #ObjectiveLepiter }
+Package { #name : 'ObjectiveLepiter' }

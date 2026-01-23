@@ -1,6 +1,6 @@
-Extension { #name : #BlockClosure }
+Extension { #name : 'BlockClosure' }
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 BlockClosure >> olDetectUIDBlock [
 
 	^ self

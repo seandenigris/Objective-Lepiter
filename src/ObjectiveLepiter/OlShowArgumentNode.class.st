@@ -1,20 +1,22 @@
 Class {
-	#name : #OlShowArgumentNode,
-	#superclass : #OlArgumentNode,
-	#category : #'ObjectiveLepiter-Annotation'
+	#name : 'OlShowArgumentNode',
+	#superclass : 'OlArgumentNode',
+	#category : 'ObjectiveLepiter-Annotation',
+	#package : 'ObjectiveLepiter',
+	#tag : 'Annotation'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlShowArgumentNode >> acceptVisitor: anObjectParseVisitor [
 	^ anObjectParseVisitor visitShowArgument: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlShowArgumentNode >> isShow [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlShowArgumentNode >> selectorValue [
 
 	^ self value value asSymbol

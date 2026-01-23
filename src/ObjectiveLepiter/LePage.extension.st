@@ -1,6 +1,6 @@
-Extension { #name : #LePage }
+Extension { #name : 'LePage' }
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 LePage class >> dbObject: anObject [
 	| result type |
 	result := self new.
@@ -10,7 +10,7 @@ LePage class >> dbObject: anObject [
 		yourself
 ]
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 LePage >> olAsReference [
 
 	^ OlLepiterPage new
@@ -19,7 +19,7 @@ LePage >> olAsReference [
 		yourself
 ]
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 LePage >> olObject [
 
 	self type isDbObjectPageType ifFalse: [ ^ nil ].
@@ -27,7 +27,7 @@ LePage >> olObject [
 	^ self type subjectModel
 ]
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 LePage >> olObjectReferences [
 	^ self allChildrenTextSnippets
 		flatCollect: [ :aTextSnippet | aTextSnippet ast // OlAnnotationNode ]

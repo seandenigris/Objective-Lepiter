@@ -1,40 +1,42 @@
 Class {
-	#name : #OlAnnotationNode,
-	#superclass : #OlObjectParseNode,
+	#name : 'OlAnnotationNode',
+	#superclass : 'OlObjectParseNode',
 	#instVars : [
 		'identifier',
 		'bars',
 		'optionalArguments'
 	],
-	#category : #'ObjectiveLepiter-Annotation'
+	#category : 'ObjectiveLepiter-Annotation',
+	#package : 'ObjectiveLepiter',
+	#tag : 'Annotation'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlAnnotationNode >> acceptVisitor: anObjectParseVisitor [
 	^ anObjectParseVisitor visitOlAnnotation: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlAnnotationNode >> bars [
 	^ bars
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlAnnotationNode >> bars: anOrderedCollection [
 	bars := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlAnnotationNode >> compositeNodeVariables [
 	^ #(#optionalArguments)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlAnnotationNode >> compositeTokenVariables [
 	^ #(#bars)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlAnnotationNode >> expanded [
 
 	^ self optionalArguments 
@@ -43,53 +45,53 @@ OlAnnotationNode >> expanded [
 		ifNone: [ self expandedDefault ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlAnnotationNode >> expandedDefault [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlAnnotationNode >> hasUID [
 	^ self uid isNotNil
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlAnnotationNode >> identifier [
 	^ identifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlAnnotationNode >> identifier: anOlArgumentNode [
 	self identifier notNil ifTrue: [ self identifier parent: nil ].
 	identifier := anOlArgumentNode.
 	self identifier notNil ifTrue: [ self identifier parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 OlAnnotationNode >> initialize [
 	super initialize.
 	bars := OrderedCollection new: 2.
 	optionalArguments := OrderedCollection new: 2.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlAnnotationNode >> isExpanded [
 	^ self attributeNamed: #isExpanded ifAbsent: [ self expanded ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlAnnotationNode >> label [
 	^ self labelNode ifNotNil: [ :arg | arg text ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlAnnotationNode >> labelNode [
 	^ self optionalArguments 
 		detect: [ :each | each isLabel ] 
 		ifNone: [ nil ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 OlAnnotationNode >> matchesUidString36: aString [
 	"Fast object lookup that avoids searching DbSoup which is significantly more expensive. So something like:
 		`aLargeCollection detect: [ :e | thisNode object = e ]`
@@ -99,29 +101,29 @@ OlAnnotationNode >> matchesUidString36: aString [
 	^ self uid = aString
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlAnnotationNode >> nodeVariables [
 	^ #(#identifier)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlAnnotationNode >> object [
 	^ DbSoup detectUID: self uid ifNone: [ nil ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlAnnotationNode >> optionalArguments [
 	^ optionalArguments
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlAnnotationNode >> optionalArguments: anOrderedCollection [
 	self setParents: self optionalArguments to: nil.
 	optionalArguments := anOrderedCollection.
 	self setParents: self optionalArguments to: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlAnnotationNode >> renderedText [
 	self label ifNotNil: [ :lbl | ^ lbl ].
 	
@@ -130,19 +132,19 @@ OlAnnotationNode >> renderedText [
 		ifNil: [ ('uid=', self uid) asRopedText ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlAnnotationNode >> showNode [
 	^ self optionalArguments 
 		detect: [ :each | each isShow ] 
 		ifNone: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlAnnotationNode >> showSelector [
 	^ self showNode ifNotNil: [ :node | node selectorValue ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlAnnotationNode >> uid [
 	^ self identifier uid
 ]

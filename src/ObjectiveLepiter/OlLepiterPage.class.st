@@ -1,14 +1,16 @@
 Class {
-	#name : #OlLepiterPage,
-	#superclass : #Object,
+	#name : 'OlLepiterPage',
+	#superclass : 'Object',
 	#instVars : [
 		'databaseIdString',
 		'idString'
 	],
-	#category : #'ObjectiveLepiter-Wrappers'
+	#category : 'ObjectiveLepiter-Wrappers',
+	#package : 'ObjectiveLepiter',
+	#tag : 'Wrappers'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlLepiterPage >> database [
 
 	self databaseId ifNil: [ ^ nil ].
@@ -18,25 +20,25 @@ OlLepiterPage >> database [
 		ifNone: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlLepiterPage >> databaseId [
 
 	^ databaseIdString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlLepiterPage >> databaseId: aString [
 
 	databaseIdString := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlLepiterPage >> displayStringOn: aStream [
 
 	aStream << self page title
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlLepiterPage >> gtLiveFor: aView [
 	<gtView>
 	
@@ -50,17 +52,17 @@ OlLepiterPage >> gtLiveFor: aView [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlLepiterPage >> id [
 	^ idString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlLepiterPage >> id: aString [
 	idString := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlLepiterPage >> page [
 
 	self database pageWithID: self id ifPresent: [ :s | ^ s ] ifAbsent: [ nil ].

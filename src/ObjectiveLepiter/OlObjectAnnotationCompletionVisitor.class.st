@@ -2,25 +2,27 @@
 Adapted from {{gtClass:LeAnnotationCompletionVisitor}}.
 "
 Class {
-	#name : #OlObjectAnnotationCompletionVisitor,
-	#superclass : #Object,
+	#name : 'OlObjectAnnotationCompletionVisitor',
+	#superclass : 'Object',
 	#traits : 'TSmaCCComponentVisitor + (TOlObjectParseNodeVisitor - {#acceptNode:})',
 	#classTraits : 'TSmaCCComponentVisitor classTrait + TOlObjectParseNodeVisitor classTrait',
-	#category : #'ObjectiveLepiter-Annotation'
+	#category : 'ObjectiveLepiter-Annotation',
+	#package : 'ObjectiveLepiter',
+	#tag : 'Annotation'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectAnnotationCompletionVisitor class >> activate [
 	LeContentCompletionVisitor additionalCompletionVisitors add: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectAnnotationCompletionVisitor class >> obsolete [
 	LeContentCompletionVisitor additionalCompletionVisitors remove: self ifAbsent: [  ].
 	^ super obsolete
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 OlObjectAnnotationCompletionVisitor >> isAtFirstArgumentStart: aSmaCCError [ 
 
 	aSmaCCError stackContents isEmpty ifFalse: [ ^ false ].
@@ -29,7 +31,7 @@ OlObjectAnnotationCompletionVisitor >> isAtFirstArgumentStart: aSmaCCError [
 	^ aSmaCCError parent colon stopPosition = self position
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 OlObjectAnnotationCompletionVisitor >> isInFirstArgumentName: aSmaCCError [ 
 
 	aSmaCCError stackContents isEmpty ifFalse: [ ^ false ].
@@ -38,7 +40,7 @@ OlObjectAnnotationCompletionVisitor >> isInFirstArgumentName: aSmaCCError [
 	^ aSmaCCError errorToken stopPosition = self position
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 OlObjectAnnotationCompletionVisitor >> isNameArgumentValueStart: aSmaCCError [
 
 	| token argumentName |
@@ -58,7 +60,7 @@ OlObjectAnnotationCompletionVisitor >> isNameArgumentValueStart: aSmaCCError [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectAnnotationCompletionVisitor >> optionsStartingWith: aString ignoring: aCollection [
 	| valueStream |
 	WrapperSignal emit: { 'optionsStartingWith:ignoring:'. aString. aCollection. self }.
@@ -80,12 +82,12 @@ OlObjectAnnotationCompletionVisitor >> optionsStartingWith: aString ignoring: aC
 	self composite addStream: valueStream.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectAnnotationCompletionVisitor >> position [
 	^ self composite position
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectAnnotationCompletionVisitor >> previousOptionsFor: aSmaCCErrorNode [
 	aSmaCCErrorNode stackContents
 		do: [ :annNode | 
@@ -96,18 +98,18 @@ OlObjectAnnotationCompletionVisitor >> previousOptionsFor: aSmaCCErrorNode [
 	^ #()
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectAnnotationCompletionVisitor >> strategy [
 	^ self composite strategy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectAnnotationCompletionVisitor >> valueForOption: optionName startingWith: aString [
 	"LeAnnotationCompletionVisitor uses this for canned options like boolean. See other sender"
 	^ self
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 OlObjectAnnotationCompletionVisitor >> visitError: aSmaCCError at: index [
 
 	| token |
@@ -148,7 +150,7 @@ OlObjectAnnotationCompletionVisitor >> visitError: aSmaCCError at: index [
 	^ self visitSmaCCParseNode: aSmaCCError
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 OlObjectAnnotationCompletionVisitor >> visitFirstArgumentError: aSmaCCError [
 	WrapperSignal emit: 'visit first argument'.
 	
@@ -175,7 +177,7 @@ OlObjectAnnotationCompletionVisitor >> visitFirstArgumentError: aSmaCCError [
 	^ self visitSmaCCParseNode: aSmaCCError
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectAnnotationCompletionVisitor >> visitNameArgument: aNameValue [
 	| first last completion isCursorInside |
 	WrapperSignal emit: { 'visitNameArgument:'. aNameValue. self }.
@@ -190,7 +192,7 @@ OlObjectAnnotationCompletionVisitor >> visitNameArgument: aNameValue [
 	^ self composite completionResult: completion
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 OlObjectAnnotationCompletionVisitor >> visitSmaCCError: aSmaCCError [
 	| index |
 

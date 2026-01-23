@@ -1,6 +1,6 @@
-Extension { #name : #LePageType }
+Extension { #name : 'LePageType' }
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 LePageType >> isDbObjectPageType [
 	^ false
 ]

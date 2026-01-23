@@ -1,10 +1,12 @@
 Class {
-	#name : #OlObjectAnnotationScanner,
-	#superclass : #SmaCCScanner,
-	#category : #'ObjectiveLepiter-Annotation'
+	#name : 'OlObjectAnnotationScanner',
+	#superclass : 'SmaCCScanner',
+	#category : 'ObjectiveLepiter-Annotation',
+	#package : 'ObjectiveLepiter',
+	#tag : 'Annotation'
 }
 
-{ #category : #'generated-initialization' }
+{ #category : 'generated-initialization' }
 OlObjectAnnotationScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
 	#(#(11 'expanded' #(9 #(#default))) #(11 'false' #(10 #(#default))) #(11 'label' #(7 #(#default))) #(11 'true' #(10 #(#default))))
@@ -15,17 +17,17 @@ OlObjectAnnotationScanner class >> initializeKeywordMap [
 	^ keywordMap
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlObjectAnnotationScanner >> emptySymbolTokenId [
 	^ 27
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlObjectAnnotationScanner >> errorTokenId [
 	^ 28
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlObjectAnnotationScanner >> scan1 [
 	self step.
 	currentCharacter == $# ifTrue: [ ^ self scan1X1 ].
@@ -33,7 +35,7 @@ OlObjectAnnotationScanner >> scan1 [
 	^ self scan1X6
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlObjectAnnotationScanner >> scan1X1 [
 	self step.
 	currentCharacter == $\ ifTrue: [ ^ self scan3 ].
@@ -48,7 +50,7 @@ OlObjectAnnotationScanner >> scan1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlObjectAnnotationScanner >> scan1X2 [
 	self recordMatch: #(1 11).
 	self step.
@@ -62,7 +64,7 @@ OlObjectAnnotationScanner >> scan1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlObjectAnnotationScanner >> scan1X3 [
 	self recordMatch: #(11).
 	self step.
@@ -84,7 +86,7 @@ OlObjectAnnotationScanner >> scan1X3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlObjectAnnotationScanner >> scan1X4 [
 	self recordMatch: #(11).
 	self step.
@@ -106,7 +108,7 @@ OlObjectAnnotationScanner >> scan1X4 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlObjectAnnotationScanner >> scan1X5 [
 	self recordMatch: #(11).
 	self step.
@@ -124,7 +126,7 @@ OlObjectAnnotationScanner >> scan1X5 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlObjectAnnotationScanner >> scan1X6 [
 	currentCharacter == $\ ifTrue: [ ^ self scan3 ].
 	currentCharacter == $n ifTrue: [ ^ self scan1X4 ].
@@ -142,7 +144,7 @@ OlObjectAnnotationScanner >> scan1X6 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlObjectAnnotationScanner >> scan2 [
 	[ self recordMatch: #(11).
 	self step.
@@ -156,7 +158,7 @@ OlObjectAnnotationScanner >> scan2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlObjectAnnotationScanner >> scan3 [
 	self step.
 	(currentCharacter == $!
@@ -169,7 +171,7 @@ OlObjectAnnotationScanner >> scan3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlObjectAnnotationScanner >> scan4 [
 	[ self recordMatch: #(11).
 	self step.
@@ -178,7 +180,7 @@ OlObjectAnnotationScanner >> scan4 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlObjectAnnotationScanner >> scan5 [
 	self recordMatch: #(11).
 	self step.
@@ -189,7 +191,7 @@ OlObjectAnnotationScanner >> scan5 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlObjectAnnotationScanner >> scan6 [
 	self step.
 	currentCharacter == $=
@@ -235,7 +237,7 @@ OlObjectAnnotationScanner >> scan6 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlObjectAnnotationScanner >> scan7 [
 	self step.
 	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(1) ].
@@ -274,7 +276,7 @@ OlObjectAnnotationScanner >> scan7 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlObjectAnnotationScanner >> scanForToken [
 	scope == #label ifTrue: [ ^ self scan6 ].
 	scope == #uid ifTrue: [ ^ self scan7 ].

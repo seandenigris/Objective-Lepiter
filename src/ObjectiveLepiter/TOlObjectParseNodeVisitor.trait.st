@@ -1,51 +1,53 @@
 Trait {
-	#name : #TOlObjectParseNodeVisitor,
+	#name : 'TOlObjectParseNodeVisitor',
 	#traits : 'TSmaCCParseNodeVisitor',
 	#classTraits : 'TSmaCCParseNodeVisitor classTrait',
-	#category : #'ObjectiveLepiter-Annotation'
+	#category : 'ObjectiveLepiter-Annotation',
+	#package : 'ObjectiveLepiter',
+	#tag : 'Annotation'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TOlObjectParseNodeVisitor >> visitAnnotation: anAnnotation [
 	^ self visitObjectParse: anAnnotation
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TOlObjectParseNodeVisitor >> visitArgument: anArgument [
 	^ self visitObjectParse: anArgument
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TOlObjectParseNodeVisitor >> visitExpandedArgument: anExpandedArgument [
 	^ self visitArgument: anExpandedArgument
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TOlObjectParseNodeVisitor >> visitLabelArgument: aLabelArgument [
 	^ self visitArgument: aLabelArgument
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TOlObjectParseNodeVisitor >> visitNameArgument: aNameArgument [
 	^ self visitArgument: aNameArgument
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TOlObjectParseNodeVisitor >> visitObjectParse: anObjectParse [
 	^ self visitSmaCCParseNode: anObjectParse
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TOlObjectParseNodeVisitor >> visitOlAnnotation: anAnnotation [
 	^ self visitAnnotation: anAnnotation
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TOlObjectParseNodeVisitor >> visitShowArgument: aShowArgument [
 	^ self visitArgument: aShowArgument
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TOlObjectParseNodeVisitor >> visitUIDArgument: anUIDArgument [
 	^ self visitArgument: anUIDArgument
 ]

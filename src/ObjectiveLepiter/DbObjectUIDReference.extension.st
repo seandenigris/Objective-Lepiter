@@ -1,6 +1,6 @@
-Extension { #name : #DbObjectUIDReference }
+Extension { #name : 'DbObjectUIDReference' }
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 DbObjectUIDReference class >> leJsonV4Name [
 	^ 'dbObjectUIDReference'
 ]

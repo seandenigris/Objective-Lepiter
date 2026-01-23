@@ -1,6 +1,6 @@
-Extension { #name : #LePharoSnippetViewModel }
+Extension { #name : 'LePharoSnippetViewModel' }
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 LePharoSnippetViewModel >> initializeCoderAddOns: aCoderViewModel [
 	"Initialise the keyboard shortcuts in the code editor"
 	

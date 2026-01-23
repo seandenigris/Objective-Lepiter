@@ -1,6 +1,6 @@
-Extension { #name : #DbTDomainObject }
+Extension { #name : 'DbTDomainObject' }
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 DbTDomainObject >> editLepiterPageDescription [
 	<magritteActionDescription>
 	
@@ -11,7 +11,7 @@ DbTDomainObject >> editLepiterPageDescription [
 		tooltip: 'View Lepiter Page'
 ]
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 DbTDomainObject >> editLepiterPageDescriptionSpawning: aValuable icon: anIconStencil deemphasizedUnless: aBooleanValuable tooltip: aString [
 
 	| iconStencil |
@@ -36,7 +36,7 @@ DbTDomainObject >> editLepiterPageDescriptionSpawning: aValuable icon: anIconSte
 		yourself
 ]
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 DbTDomainObject >> ensureLepiterPage [
 
 	self hasLepiterPage ifFalse: [ 
@@ -54,7 +54,7 @@ DbTDomainObject >> ensureLepiterPage [
 	^ nil
 ]
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 DbTDomainObject >> gtViewLepiterOn: aView [
 	<gtView>
 	self hasLepiterPage ifFalse: [ ^ aView empty ].
@@ -66,50 +66,51 @@ DbTDomainObject >> gtViewLepiterOn: aView [
 		view: #gtLiveFor:
 ]
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 DbTDomainObject >> hasLepiterPage [
 
 	^ self lepiterPageID isNotNil
 ]
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 DbTDomainObject >> lepiterDB [
 	^ self propertyAt: #lepiterDB ifAbsent: [ ObjectiveLepiter database ]
 ]
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 DbTDomainObject >> lepiterDB: aLeDatabase [
 	self propertyAt: #lepiterDB put: aLeDatabase
 ]
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 DbTDomainObject >> lepiterPageEnsureRemoved [
 
 	self hasLepiterPage ifFalse: [ ^ self ].
 	self ensureLepiterPage removeSelf.
+	self lepiterPageID: nil
 ]
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 DbTDomainObject >> lepiterPageID [
 	^ self propertyAt: #lepiterPageID ifAbsent: [ ^ nil ]
 ]
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 DbTDomainObject >> lepiterPageID: aUID [
 	^ self propertyAt: #lepiterPageID putRemovingNil: aUID
 ]
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 DbTDomainObject >> lepiterPageTitle [
 	^ self displayString
 ]
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 DbTDomainObject >> newLepiterPage [
 	^ LePage dbObject: self
 ]
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 DbTDomainObject >> olReferences [
 
 	^ LeDatabasesRegistry uniqueInstance defaultLogicalDatabase pages select: [ :p | 
@@ -117,7 +118,7 @@ DbTDomainObject >> olReferences [
 			node matchesUidString36: self ensureUUID asString36 ] ]
 ]
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 DbTDomainObject >> olReferencesGtViewFor: aView [
 	<gtView>
 	
@@ -130,7 +131,7 @@ DbTDomainObject >> olReferencesGtViewFor: aView [
 		actionUpdateButton
 ]
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 DbTDomainObject >> olUID [
 
 	^ self ensureUUID

@@ -1,6 +1,6 @@
 Class {
-	#name : #OlObjectPageType,
-	#superclass : #LePageType,
+	#name : 'OlObjectPageType',
+	#superclass : 'LePageType',
 	#instVars : [
 		'subjectModelReference'
 	],
@@ -8,10 +8,12 @@ Class {
 		'ModelReferenceBuilder',
 		'ModelReferenceBuilderMap'
 	],
-	#category : #'ObjectiveLepiter-Wrappers'
+	#category : 'ObjectiveLepiter-Wrappers',
+	#package : 'ObjectiveLepiter',
+	#tag : 'Wrappers'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 OlObjectPageType class >> exampleEmptyPage [
 	<gtExample>
 	
@@ -33,13 +35,13 @@ OlObjectPageType class >> exampleEmptyPage [
 	^ page
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OlObjectPageType class >> initialize [
 
 	self updatePrimaryDBPageTypes
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectPageType class >> leJsonV4AttributeMapping [
 
 	^ super leJsonV4AttributeMapping
@@ -47,25 +49,25 @@ OlObjectPageType class >> leJsonV4AttributeMapping [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectPageType class >> leJsonV4Name [
 
 	^ 'olObjectPage'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectPageType class >> modelReferenceBuilderMap [
 
 	^ ModelReferenceBuilderMap ifNil: [ ModelReferenceBuilderMap := Dictionary new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectPageType class >> modelReferenceBuilderMap: anObject [
 
 	^ ModelReferenceBuilderMap := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectPageType class >> modelReferenceForClass: aClass [
 	^ self modelReferenceBuilderMap 
 		at: aClass
@@ -75,12 +77,12 @@ OlObjectPageType class >> modelReferenceForClass: aClass [
 				ifNil: [ self error: 'no builder for ', aClass name, '. You can add one with #modelReferenceForClass:builder:' ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectPageType class >> modelReferenceForClass: aClass builder: aValuable [
 	^ self modelReferenceBuilderMap at: aClass put: aValuable
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OlObjectPageType class >> subjectModel: anObject page: aLePage [
 	| referenceBuilder reference |
 	referenceBuilder := self modelReferenceForClass: anObject class.
@@ -93,7 +95,7 @@ OlObjectPageType class >> subjectModel: anObject page: aLePage [
 		yourself.
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 OlObjectPageType >> = anObject [
 	"Answer whether the receiver and anObject represent the same page type."
 
@@ -104,31 +106,31 @@ OlObjectPageType >> = anObject [
 	^ self subjectModelID = anObject subjectModelID
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectPageType >> databaseKey [
 	"Answer the attribute used to index a page of the receiver's type in the database."
 
 	^ self subjectModelID
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 OlObjectPageType >> hash [
 	"Answer an integer value that is related to the identity of the receiver."
 
 	^ self subjectModelID hash
 ]
 
-{ #category : #'api - testing' }
+{ #category : 'api - testing' }
 OlObjectPageType >> isDbObjectPageType [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectPageType >> pageElementClass [
 	^ super pageElementClass
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 OlObjectPageType >> printOn: aStream [
 
 	aStream
@@ -136,38 +138,38 @@ OlObjectPageType >> printOn: aStream [
 		<< (self subjectModel ifNotNil: #printString ifNil: [ '<none>' ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectPageType >> saveEmptyPages [
 	"We leave it up to the subject object to decide if/when to delete"
 
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectPageType >> subjectModel [
 	self subjectModelReference ifNil: [ ^ nil ].
 	^ self subjectModelReference object
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectPageType >> subjectModelID [
 
 	^ self subjectModelReference ifNotNil: [ :ref | ref uid ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectPageType >> subjectModelReference [
 
 	^ subjectModelReference
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectPageType >> subjectModelReference: anMAObjectUIDReference [
 
 	subjectModelReference := anMAObjectUIDReference
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectPageType >> title [
 
 	^ self subjectModel 

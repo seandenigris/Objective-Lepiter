@@ -1,15 +1,17 @@
 Class {
-	#name : #OlNameArgumentNode,
-	#superclass : #OlArgumentNode,
-	#category : #'ObjectiveLepiter-Annotation'
+	#name : 'OlNameArgumentNode',
+	#superclass : 'OlArgumentNode',
+	#category : 'ObjectiveLepiter-Annotation',
+	#package : 'ObjectiveLepiter',
+	#tag : 'Annotation'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlNameArgumentNode >> acceptVisitor: anObjectParseVisitor [
 	^ anObjectParseVisitor visitNameArgument: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlNameArgumentNode >> uid [
 	"There's either a name or UID, but not both"
 	^ nil

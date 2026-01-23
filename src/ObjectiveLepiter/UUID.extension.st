@@ -1,6 +1,6 @@
-Extension { #name : #UUID }
+Extension { #name : 'UUID' }
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 UUID >> olDetectUIDBlock [
 
 	^ [ :uid | uid = self ]

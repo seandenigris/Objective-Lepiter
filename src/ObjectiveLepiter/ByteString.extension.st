@@ -1,6 +1,6 @@
-Extension { #name : #ByteString }
+Extension { #name : 'ByteString' }
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 ByteString >> olDetectUIDBlock [
 
 	^ [ :uid | uid asString36 = self ]

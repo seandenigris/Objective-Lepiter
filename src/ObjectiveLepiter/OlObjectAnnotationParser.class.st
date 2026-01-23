@@ -1,10 +1,12 @@
 Class {
-	#name : #OlObjectAnnotationParser,
-	#superclass : #SmaCCGLRParser,
-	#category : #'ObjectiveLepiter-Annotation'
+	#name : 'OlObjectAnnotationParser',
+	#superclass : 'SmaCCGLRParser',
+	#category : 'ObjectiveLepiter-Annotation',
+	#package : 'ObjectiveLepiter',
+	#tag : 'Annotation'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OlObjectAnnotationParser class >> activate [
 	LeParser annotationParsers
 		at: 'olObject'
@@ -13,18 +15,18 @@ OlObjectAnnotationParser class >> activate [
 	OlObjectAnnotationCompletionVisitor activate
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectAnnotationParser class >> argumentNames [
 	"For e.g. completion"
 	^ #(name uid label expanded show)
 ]
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 OlObjectAnnotationParser class >> cacheId [
 	^'2024-04-21T00:04:07.079853-04:00'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlObjectAnnotationParser class >> definitionComment [
 "%glr;
 %root ObjectParse;
@@ -119,18 +121,18 @@ Name
 	;"
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OlObjectAnnotationParser class >> initialize [
 	self activate
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OlObjectAnnotationParser class >> obsolete [
 	LeParser annotationParsers removeKey: 'olObject' ifAbsent: [  ].
 	^ super obsolete
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlObjectAnnotationParser class >> reduceTable [
 ^#(
 	#(22 0 #reduceActionForSwitchToLabel1: 1306625 true) 
@@ -156,27 +158,27 @@ OlObjectAnnotationParser class >> reduceTable [
 	).
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlObjectAnnotationParser class >> scannerClass [
 	^OlObjectAnnotationScanner
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlObjectAnnotationParser class >> startingStateForAnnotation [
 	^ 1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlObjectAnnotationParser class >> symbolNames [
 	^ #('"="' '"name"' '"show"' '"uid"' '"|"' '<uid>' '<labelKeyword>' '<labelText>' '<expanded>' '<boolean>' '<selector>' 'B e g i n' 'Annotation' '("|" ''bar'' OptionalArgument ''optionalArgument'')' '("|" ''bar'' OptionalArgument ''optionalArgument'')+' 'OptionalArgument' 'Show' 'Expanded' 'OptionalBooleanValue' 'Label' 'SwitchToDefault' 'SwitchToLabel' 'Identifier' 'UID' 'SwitchToUid' 'Name' 'E O F' 'error')
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlObjectAnnotationParser class >> symbolTypes [
 	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #OlAnnotationNode #OlAnnotationNode #OrderedCollection #OrderedCollection #OlArgumentNode #OlShowArgumentNode #OlExpandedArgumentNode #OrderedCollection #OlLabelArgumentNode nil nil #OlArgumentNode #OlUIDArgumentNode nil #OlNameArgumentNode #SmaCCToken #SmaCCErrorNode)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlObjectAnnotationParser class >> transitionTable [
 ^#(
 #[1 0 9 0 2 0 13 0 4 0 17 0 13 0 21 0 23 0 21 0 24 0 21 0 26] 
@@ -217,7 +219,7 @@ OlObjectAnnotationParser class >> transitionTable [
 	).
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 OlObjectAnnotationParser >> reduceActionForAnnotation1: nodes [
 	| result |
 	result := OlAnnotationNode new.
@@ -227,7 +229,7 @@ OlObjectAnnotationParser >> reduceActionForAnnotation1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 OlObjectAnnotationParser >> reduceActionForAnnotation2: nodes [
 	| result |
 	result := OlAnnotationNode new.
@@ -235,7 +237,7 @@ OlObjectAnnotationParser >> reduceActionForAnnotation2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 OlObjectAnnotationParser >> reduceActionForExpanded1: nodes [
 	| result |
 	result := OlExpandedArgumentNode new.
@@ -245,7 +247,7 @@ OlObjectAnnotationParser >> reduceActionForExpanded1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 OlObjectAnnotationParser >> reduceActionForLabel1: nodes [
 	| result |
 	result := OlLabelArgumentNode new.
@@ -255,7 +257,7 @@ OlObjectAnnotationParser >> reduceActionForLabel1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 OlObjectAnnotationParser >> reduceActionForName1: nodes [
 	| result |
 	result := OlNameArgumentNode new.
@@ -265,14 +267,14 @@ OlObjectAnnotationParser >> reduceActionForName1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 OlObjectAnnotationParser >> reduceActionForOptionalBooleanValue1: nodes [
 	| result |
 	result := Array new: 2.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 OlObjectAnnotationParser >> reduceActionForShow1: nodes [
 	| result |
 	result := OlShowArgumentNode new.
@@ -282,25 +284,25 @@ OlObjectAnnotationParser >> reduceActionForShow1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 OlObjectAnnotationParser >> reduceActionForSwitchToDefault1: nodes [
 	self scope: #default.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 OlObjectAnnotationParser >> reduceActionForSwitchToLabel1: nodes [
 	self scope: #label.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 OlObjectAnnotationParser >> reduceActionForSwitchToUid1: nodes [
 	self scope: #uid.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 OlObjectAnnotationParser >> reduceActionForUID1: nodes [
 	| result |
 	result := OlUIDArgumentNode new.
@@ -310,7 +312,7 @@ OlObjectAnnotationParser >> reduceActionForUID1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 OlObjectAnnotationParser >> reduceActionFor______bar__OptionalArgument__optionalArgument__1: nodes [
 	| result |
 	result := Array new: 2.
@@ -319,7 +321,7 @@ OlObjectAnnotationParser >> reduceActionFor______bar__OptionalArgument__optional
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 OlObjectAnnotationParser >> reduceActionFor______bar__OptionalArgument__optionalArgument___1: nodes [
 	| result |
 	result := Array new: 2.
@@ -330,7 +332,7 @@ OlObjectAnnotationParser >> reduceActionFor______bar__OptionalArgument__optional
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 OlObjectAnnotationParser >> reduceActionFor______bar__OptionalArgument__optionalArgument___2: nodes [
 	| result |
 	result := nodes at: 1.

@@ -1,6 +1,6 @@
-Extension { #name : #LeSnippet }
+Extension { #name : 'LeSnippet' }
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 LeSnippet >> olAsReference [
 
 	^ OlLepiterSnippet new
@@ -9,7 +9,7 @@ LeSnippet >> olAsReference [
 		yourself
 ]
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 LeSnippet >> olUID [
 	
 	^ self uid

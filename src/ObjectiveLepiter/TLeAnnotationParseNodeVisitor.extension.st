@@ -1,11 +1,11 @@
-Extension { #name : #TLeAnnotationParseNodeVisitor }
+Extension { #name : 'TLeAnnotationParseNodeVisitor' }
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 TLeAnnotationParseNodeVisitor >> visitOlAnnotation: anOlAnnotationNode [
 	"Do nothing. Actual work done in users"
 ]
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 TLeAnnotationParseNodeVisitor >> visitUIDArgument: anOlUIDArgument [
 	"Do nothing. Actual work done in e.g. LeHtmlTextSnippetAnnotationVisitor"
 ]

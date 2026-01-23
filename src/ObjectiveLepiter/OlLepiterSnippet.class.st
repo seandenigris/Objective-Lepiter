@@ -1,14 +1,16 @@
 Class {
-	#name : #OlLepiterSnippet,
-	#superclass : #Object,
+	#name : 'OlLepiterSnippet',
+	#superclass : 'Object',
 	#instVars : [
 		'databaseIdString',
 		'idString'
 	],
-	#category : #'ObjectiveLepiter-Wrappers'
+	#category : 'ObjectiveLepiter-Wrappers',
+	#package : 'ObjectiveLepiter',
+	#tag : 'Wrappers'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlLepiterSnippet >> database [
 
 	self databaseId ifNil: [ ^ nil ].
@@ -18,25 +20,25 @@ OlLepiterSnippet >> database [
 		ifNone: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlLepiterSnippet >> databaseId [
 
 	^ databaseIdString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlLepiterSnippet >> databaseId: aString [
 
 	databaseIdString := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlLepiterSnippet >> displayStringOn: aStream [
 
 	aStream << self snippet contentAsString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlLepiterSnippet >> gtLiveFor: aView [
 	<gtView>
 	
@@ -50,7 +52,7 @@ OlLepiterSnippet >> gtLiveFor: aView [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlLepiterSnippet >> gtPageFor: aView [
 	<gtView>
 	
@@ -64,17 +66,17 @@ OlLepiterSnippet >> gtPageFor: aView [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlLepiterSnippet >> id [
 	^ idString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlLepiterSnippet >> id: aString [
 	idString := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlLepiterSnippet >> snippet [
 
 	self database blockWithUID: self id ifPresent: [ :s | ^ s ] ifAbsent: [ nil ].

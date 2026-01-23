@@ -1,6 +1,6 @@
-Extension { #name : #GtWorldSpotterSearchStart }
+Extension { #name : 'GtWorldSpotterSearchStart' }
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 GtWorldSpotterSearchStart >> olGtSpotterContainingSubPartsFor: aSearch [
 	"<gtSearch>"
 

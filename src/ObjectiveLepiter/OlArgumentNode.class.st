@@ -1,65 +1,67 @@
 Class {
-	#name : #OlArgumentNode,
-	#superclass : #OlObjectParseNode,
+	#name : 'OlArgumentNode',
+	#superclass : 'OlObjectParseNode',
 	#instVars : [
 		'name',
 		'equals',
 		'value'
 	],
-	#category : #'ObjectiveLepiter-Annotation'
+	#category : 'ObjectiveLepiter-Annotation',
+	#package : 'ObjectiveLepiter',
+	#tag : 'Annotation'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlArgumentNode >> acceptVisitor: anObjectParseVisitor [
 	^ anObjectParseVisitor visitArgument: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlArgumentNode >> equals [
 	^ equals
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlArgumentNode >> equals: aSmaCCToken [
 	equals := aSmaCCToken
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlArgumentNode >> isExpanded [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlArgumentNode >> isLabel [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlArgumentNode >> isShow [
 	^ false
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlArgumentNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlArgumentNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlArgumentNode >> tokenVariables [
 	^ #(#name #equals #value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlArgumentNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 OlArgumentNode >> value: aSmaCCToken [
 	value := aSmaCCToken
 ]

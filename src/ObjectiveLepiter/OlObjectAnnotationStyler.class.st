@@ -1,33 +1,35 @@
 Class {
-	#name : #OlObjectAnnotationStyler,
-	#superclass : #LeComponentStyler,
+	#name : 'OlObjectAnnotationStyler',
+	#superclass : 'LeComponentStyler',
 	#traits : 'TOlObjectParseNodeVisitor',
 	#classTraits : 'TOlObjectParseNodeVisitor classTrait',
-	#category : #'ObjectiveLepiter-Annotation'
+	#category : 'ObjectiveLepiter-Annotation',
+	#package : 'ObjectiveLepiter',
+	#tag : 'Annotation'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectAnnotationStyler class >> activate [
 	LeSnippetStylerVisitor additionalStylers add: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectAnnotationStyler class >> obsolete [
 	LeSnippetStylerVisitor additionalStylers remove: self ifAbsent: [  ].
 	^ super obsolete
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectAnnotationStyler >> elements [
 	^ self composite elements
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectAnnotationStyler >> expanded [
 	^ self composite expanded
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 OlObjectAnnotationStyler >> renderedAttributeLabeled: aRopedText withAction: aBlock isValid: aBoolean [
 
 	^ GtButtonAttribute new
@@ -46,7 +48,7 @@ OlObjectAnnotationStyler >> renderedAttributeLabeled: aRopedText withAction: aBl
 				yourself ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 OlObjectAnnotationStyler >> styleAutoHiding: anAnnotation [
 	"Add styling that hides the markup when it loses keyboard focus"
 	| first last range |
@@ -60,7 +62,7 @@ OlObjectAnnotationStyler >> styleAutoHiding: anAnnotation [
 		whenOutside: anAnnotation parent sourceInterval 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectAnnotationStyler >> styleExpandingObject: anAnnotation [
 
 	| cacheKey attribute |
@@ -83,7 +85,7 @@ OlObjectAnnotationStyler >> styleExpandingObject: anAnnotation [
 		to: anAnnotation parent stopPosition
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 OlObjectAnnotationStyler >> styleMarkup: anAnnotation [
 	self utility
 		subtleMarkupsInText: self text
@@ -91,7 +93,7 @@ OlObjectAnnotationStyler >> styleMarkup: anAnnotation [
 		stop: anAnnotation parent stopPosition
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 OlObjectAnnotationStyler >> styleRendered: anAnnotation [
 	"Add styling for the (in this case clickable) rendered markup"
 	| attribute |
@@ -114,17 +116,17 @@ OlObjectAnnotationStyler >> styleRendered: anAnnotation [
 		to: anAnnotation parent stopPosition
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectAnnotationStyler >> text [
 	^ self composite text
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectAnnotationStyler >> utility [
 	^ GtDocumentUtility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OlObjectAnnotationStyler >> visitAnnotation: anAnnotation [
 "Halt now."
 	self styleMarkup: anAnnotation.

@@ -1,6 +1,6 @@
-Extension { #name : #LeHtmlTextSnippetAnnotationVisitor }
+Extension { #name : 'LeHtmlTextSnippetAnnotationVisitor' }
 
-{ #category : #'*ObjectiveLepiter' }
+{ #category : '*ObjectiveLepiter' }
 LeHtmlTextSnippetAnnotationVisitor >> visitOlAnnotation: anOlAnnotationNode [
 
 	context html str: anOlAnnotationNode renderedText asString.

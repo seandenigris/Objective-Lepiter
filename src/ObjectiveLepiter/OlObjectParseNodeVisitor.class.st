@@ -1,7 +1,9 @@
 Class {
-	#name : #OlObjectParseNodeVisitor,
-	#superclass : #Object,
+	#name : 'OlObjectParseNodeVisitor',
+	#superclass : 'Object',
 	#traits : 'TOlObjectParseNodeVisitor',
 	#classTraits : 'TOlObjectParseNodeVisitor classTrait',
-	#category : #'ObjectiveLepiter-Annotation'
+	#category : 'ObjectiveLepiter-Annotation',
+	#package : 'ObjectiveLepiter',
+	#tag : 'Annotation'
 }
