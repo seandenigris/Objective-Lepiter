@@ -83,12 +83,18 @@ OlObjectPageType class >> modelReferenceForClass: aClass builder: aValuable [
 ]
 
 { #category : 'instance creation' }
-OlObjectPageType class >> subjectModel: anObject page: aLePage [
-	| referenceBuilder reference |
+OlObjectPageType class >> modelReferenceForObject: anObject [
+	| referenceBuilder |
 	referenceBuilder := self modelReferenceForClass: anObject class.
-	reference := referenceBuilder value
+	^ referenceBuilder value
 		uid: anObject olUID;
 		yourself.
+]
+
+{ #category : 'instance creation' }
+OlObjectPageType class >> subjectModel: anObject page: aLePage [
+	| reference |
+	reference := self modelReferenceForObject: anObject.
 	^ self new
 		subjectModelReference: reference;
 		page: aLePage;
@@ -123,6 +129,15 @@ OlObjectPageType >> hash [
 { #category : 'api - testing' }
 OlObjectPageType >> isDbObjectPageType [
 	^ true
+]
+
+{ #category : 'private' }
+OlObjectPageType >> object: anObject [
+	"Needed this to manually change the object due to a UUID clash. Not sure if it should be public or remain private"
+
+	| aReference |
+	aReference := self class modelReferenceForObject: anObject.
+	self subjectModelReference: aReference
 ]
 
 { #category : 'accessing' }
