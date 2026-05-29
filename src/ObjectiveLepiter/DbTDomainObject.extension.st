@@ -29,11 +29,21 @@ DbTDomainObject >> editLepiterPageDescriptionSpawning: aValuable icon: anIconSte
 				icon: iconStencil;
 				tooltip: aString;
 				yourself.
-			button action: [ :bElem |
-				bElem phlow spawnObject: (aValuable cull: anObject) ].
+			button action: [ :aButton |
+				| isPageMissing |
+				isPageMissing := (aBooleanValuable cull: self).
+				aButton phlow spawnObject: (aValuable cull: anObject).
+				isPageMissing ifFalse: [ aButton phlow fireToolUpdateWish.
+				self flag: 'we would like to select the new tab but don''t know how. See implementation below' ] ].
 			button ];
 		comment: aString;
-		yourself
+		yourself.
+		
+	"Implementation note: we would like to select the new tab, but not sure how because we don't know how to track if/when the wish is fulfilled. A one second delay did not help. If we can figure out how to synchronize the tab selection with the tool update, this is how you select the tab (as discussed at https://discord.com/channels/729445214812504107/735945764597006466/1509704956825833472):
+	anAction button action: [ :aButton :aTab | 
+    	aTab viewContentElement tabs 
+        	detect: [ :aTabModel | aTabModel tabLabel text asString = 'Transcript' ]
+	        ifFound: #select ]"
 ]
 
 { #category : '*ObjectiveLepiter' }
