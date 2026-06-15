@@ -28,6 +28,19 @@ LePage >> olObject [
 ]
 
 { #category : '*ObjectiveLepiter' }
+LePage >> olObjectGtViewFor: aView [
+  <gtView>
+  
+  self type isDbObjectPageType ifFalse: [ ^ aView empty ].
+  
+  ^ aView forward
+      title: 'Object (OL)';
+      priority: 5;
+      object: [ self type ];
+      view: #subjectModelGtViewFor:inContext:
+]
+
+{ #category : '*ObjectiveLepiter' }
 LePage >> olObjectReferences [
 	^ self allChildrenTextSnippets
 		flatCollect: [ :aTextSnippet | aTextSnippet ast // OlAnnotationNode ]
