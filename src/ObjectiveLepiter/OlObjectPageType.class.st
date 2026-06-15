@@ -131,15 +131,6 @@ OlObjectPageType >> isDbObjectPageType [
 	^ true
 ]
 
-{ #category : 'private' }
-OlObjectPageType >> object: anObject [
-	"Needed this to manually change the object due to a UUID clash. Not sure if it should be public or remain private"
-
-	| aReference |
-	aReference := self class modelReferenceForObject: anObject.
-	self subjectModelReference: aReference
-]
-
 { #category : 'accessing' }
 OlObjectPageType >> pageElementClass [
 	^ super pageElementClass
@@ -164,6 +155,15 @@ OlObjectPageType >> saveEmptyPages [
 OlObjectPageType >> subjectModel [
 	self subjectModelReference ifNil: [ ^ nil ].
 	^ self subjectModelReference object
+]
+
+{ #category : 'private' }
+OlObjectPageType >> subjectModel: anObject [
+	"Needed this to manually change the object due to a UUID clash. Not sure if it should be public or remain private"
+
+	| aReference |
+	aReference := self class modelReferenceForObject: anObject.
+	self subjectModelReference: aReference
 ]
 
 { #category : 'accessing' }
