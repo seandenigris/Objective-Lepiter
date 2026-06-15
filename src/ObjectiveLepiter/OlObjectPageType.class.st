@@ -166,6 +166,18 @@ OlObjectPageType >> subjectModel: anObject [
 	self subjectModelReference: aReference
 ]
 
+{ #category : 'as yet unclassified' }
+OlObjectPageType >> subjectModelGtViewFor: aView inContext: aContext [
+	<gtView>
+	
+	self subjectModel ifNil: [ ^ aView empty ].
+	
+	^ aView composite
+		title: 'Object';
+		priority: 10;
+		views: (self subjectModel gtViewsInContext: aContext)
+]
+
 { #category : 'accessing' }
 OlObjectPageType >> subjectModelID [
 
